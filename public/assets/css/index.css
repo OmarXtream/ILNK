@@ -1,0 +1,31 @@
+body {background-color: #fafafa;}
+main {
+  
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.section1 {
+  background-color: #FF9B7E;
+}
+.section2 {
+  background-color: white;
+  text-align: right;
+}
+.line {
+  display: flex;
+  align-items: center;
+}
+.line::after {
+  content: "";
+  width: 35px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.line.a {color: rgba(255, 255, 255, 0.3);}
+.line.a::after {
+  border-color:  rgba(255, 255, 255, 0.3);
+}
+.line.b {color:  rgba(0, 0, 0, 0.3);justify-content: flex-end;}
+.line.b::after {
+  border-color:   rgba(0, 0, 0, 0.3);
+}

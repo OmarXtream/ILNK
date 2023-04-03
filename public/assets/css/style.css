@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap');
+.iti__flag {background-image: url("../imgs/flags.png");}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .iti__flag {background-image: url("../imgs/flags@2x.png");}
+}
+.iti {width: 100%;}
+body {
+    color: #7F7F7F;
+    background-color: #fff;
+    background-image: url(../imgs/background.png);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+    font-family: 'Cairo', sans-serif;
+    overflow-x: hidden;
+}
+@media print {
+  .fltrow {
+    display: none;
+  }
+  .print {
+    display: none;
+  }
+}
+@media screen {
+  .printOnly {
+    display: none !important;
+  }
+}
+#Stest > div {
+  margin: auto;
+}
+.click{cursor: pointer;}
+html {scroll-behavior: smooth;}
+a {color: inherit; text-decoration: none !important;}
+.dropdown-toggle::after {content: none;}
+span, .span {color: #FF9B7E !important;}
+.iti__country-list {text-align: left; direction: ltr;}
+.iti__country-list span {color: inherit !important;}
+.disActive span {color: inherit !important;}
+.rounded {border-radius: 15px !important;}
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: 0;
+    margin-left: 0
+}
+.btn-primary {
+    background: #FF9B7E !important;
+    border: none;
+    border-color: rgba(255, 0, 0, 0) !important;
+    outline: none !important;
+    border-radius: 5px;
+    padding: 0.7rem 0.5rem;
+  }
+  .btn-dark {
+    padding: 0.7rem 0.5rem;
+    border: none;
+  }
+.btn-primary:hover {background-color: #FEAB93 !important;}
+.btn-primary:active,.btn-primary:focus {box-shadow: 0 0 0 .2rem rgba(94,109,247, 0.5) !important;}
+.btn-secondary {
+    background: #F8F8F8 !important;
+    border: none;
+    border-color: rgba(255, 0, 0, 0) !important;
+    outline: none !important;
+    border-radius: 5px;
+    color: #9B9B9B !important;
+    padding: 0.7rem 0.5rem;
+  }
+.btn-secondary:hover {background-color: #FAFAFA !important;}
+.btn-secondary:active, .btn-secondary:focus {box-shadow: 0 0 0 .2rem rgba(247,247,247, 0.5) !important;}
+
+.bg-light {background-color: #fafafa !important;}
+
+.text-color-1 {
+  color:#7B6796;
+}
+
+.text-color-2 {
+  color: #FF9B7E;
+}
+
+.text-color-3 {
+  color: #679677;
+}
+
+.text-color-4 {
+  color: #966767;
+}
+
+.text-color-5 {
+  color: #679396;
+}
+
+/* nav */
+.navbar .navbar-nav .nav-item {color: #FAFAFA;}
+.navbar .navbar-nav .active > .nav-link {color: #FF9B7E !important; font-weight: bold;}
+
+/* test */
+.testRadio {
+  border-radius: 12px;
+  width: 36px;
+  height: 36px;
+  /* padding: 8px; */
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #9B9FAA; 
+  z-index: 89;
+}
+.testRadio.agree {border: 2px solid #56AC8A;}
+.testRadio.disagree {border: 2px solid #5F394D;}
+.testRadio input[type="radio"]:checked+label {font-size: 12px; background-color: #9B9FAA; width: 100%; z-index: 99; height: 100%; position: absolute; top: 0; left: 0; border-radius: 0; display: flex; justify-content: center; align-items: center; color: white}
+.testRadio.agree input[type="radio"]:checked+label {background-color: #56AC8A;} 
+.testRadio.disagree input[type="radio"]:checked+label {background-color: #5F394D;} 
+.testRadioBtn {opacity: 0; width: 100%; height: 100%; cursor: pointer;}
+
+/* testFinish */
+.socialBtn {
+  display: flex;
+  padding: 16px;
+  justify-content: space-between;
+  align-items: center;
+}
+.socialBtn.facebook {
+  background-color: #4267B2;
+  border-radius: 10px;
+}
+.socialBtn.twitter {
+  background-color: #1DA1F2;
+  border-radius: 10px;
+}
+.socialBtn.google {
+  background-color: #EA4335;
+  border-radius: 10px;
+}
