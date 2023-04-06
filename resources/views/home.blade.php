@@ -17,7 +17,11 @@
     وحضوره االلكتروني">
     <meta property="og:type" content="website">
     <meta property="og:url" content="ILNK.com">
-    <!-- <meta property="og:image" content="imgs/logo.png"> -->
+    <meta property="og:image" content="{{ asset('assets/imgs/logo/lastilnklight.png') }}"> 
+
+    <link rel="shortcut icon" href="{{ asset('assets/imgs/logo/favicon.png') }}">
+    <link rel="icon" href="{{ asset('assets/imgs/logo/favicon.png') }}">
+    <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/imgs/logo/favicon.png') }}">
 
     <!-- CSS -->
     <link rel="stylesheet" href="@lang('concept.bootstrap')">
@@ -27,8 +31,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/index.css') }}">
 
 
-    <!-- other -->
-    <!-- <link rel="icon" href="imgs/icon.png"> -->
 
     <title>ILNK | انا متصل</title>
 </head>
