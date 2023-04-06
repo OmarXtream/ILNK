@@ -21,7 +21,7 @@ return [
     'email' => 'Email',
     'password' => 'Password',
     'password2' => 'Confirm password',
-    'username' => 'Username',
+    'username' => 'Username ( Page title )',
     'phone' => 'Phone number',
     'loginTitle' => 'Sign in to continue to ILNK',
     'registerTitle' => 'Sign up to continue to ILNK',
