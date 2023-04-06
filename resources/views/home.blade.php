@@ -50,7 +50,7 @@
                             <h1>@lang('home.welcome')</h1>
                             <h4 class="text-muted mb-5">@lang('home.welcomeCreate')</h4>
                             <a class="btn btn-primary mt-3 mx-2"
-                            href="#">@lang('concept.createPage')</a>
+                            href="{{route('subscribe.index')}}">@lang('concept.createPage')</a>
                         </div>
                     </div>
                 </div>
