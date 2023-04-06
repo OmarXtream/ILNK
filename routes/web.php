@@ -26,5 +26,8 @@ Route::get('profile', [App\Http\Controllers\HomeController::class, 'profile'])->
 
 Route::get('subscribe', [App\Http\Controllers\SubscribeController::class, 'index'])->name('subscribe.index');
 
+Route::get('subscribe/{planID}', [App\Http\Controllers\SubscribeController::class, 'payment'])->name('subscribe.payment');
+Route::post('subscribe/{planID}', [App\Http\Controllers\SubscribeController::class, 'pay'])->name('subscribe.pay');
+
 
 });
