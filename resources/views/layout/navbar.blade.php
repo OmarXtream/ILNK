@@ -1,6 +1,6 @@
       <!-- navbar -->
       <nav class="navbar navbar-expand-md py-3 navbar-light bg-white shadow rounded mt-3 mb-5">
-          <a class="navbar-brand span font-weight-bold" href="/"><img width="70px" height="45px" src="{{ asset('assets/imgs/logo/lastilnkdard.png') }}" alt="@lang('concept.ILNK')"></a>
+          <a class="navbar-brand span font-weight-bold" href="/"><img width="80px" height="30px" src="{{ asset('assets/imgs/logo/lastilnkdard.png') }}" alt="@lang('concept.ILNK')"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
