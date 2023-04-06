@@ -47,33 +47,10 @@
 
                         <div class="col-md-6">
                             <div class="row">
-                                {{-- <div class="col-8 mx-auto mb-3">
-                                    <a href="{{ route('social.oauth', 'facebook') }}">
-                                        <div class="facebook socialBtn text-white shadow">
-                                            <div>@lang('concept.facebook')</div>
-                                            <div><i class="fab fa-facebook-f"></i></div>
-                                        </div>
-                                    </a>
-                                </div>
+                             
+                                <img class="img-fluid" src="{{ asset('assets/imgs/undraw/login.png') }}" alt="@lang('concept.login')">
+                               
 
-                                <div class="col-8 mx-auto mb-3">
-                                    <a href="{{ route('social.oauth', 'twitter') }}">
-
-                                        <div class="twitter socialBtn text-white shadow">
-                                            <div>@lang('concept.twitter')</div>
-                                            <div><i class="fab fa-twitter"></i></div>
-                                        </div>
-                                    </a>
-
-                                </div> --}}
-                                {{-- <div class="col-8 mx-auto mb-4">
-                                    <a href="{{ route('social.oauth', 'google') }}">
-                                        <div class="google socialBtn text-white shadow">
-                                            <div>@lang('concept.google')</div>
-                                            <div><i class="fab fa-google"></i></div>
-                                        </div>
-                                    </a>
-                                </div> --}}
                             </div>
                         </div>
 

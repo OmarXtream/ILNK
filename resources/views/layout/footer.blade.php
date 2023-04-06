@@ -1,7 +1,7 @@
     </div>
 
      <footer class="bg-dark py-3 text-center text-white font-weight-bold print">
-      Made with <span style="color:red !important"><i class="fas fa-heart"></i></span> By  <a href="https://HWE.sa" target="_blank"><img width="100px" height="85px" src="{{ asset('assets/imgs/logo/lastilnklight.png') }}" alt="HWE"></a>
+      Made with <span style="color:red !important"><i class="fas fa-heart"></i></span> By  <a class="mx-2" href="https://HWE.sa" target="_blank"><img width="65px" height="65px" src="{{ asset('assets/imgs/logo/lastilnklight.png') }}" alt="HWE"></a>
     </footer> 
 
     <!-- JavaScripts -->

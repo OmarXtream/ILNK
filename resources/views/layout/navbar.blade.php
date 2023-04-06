@@ -1,6 +1,6 @@
       <!-- navbar -->
       <nav class="navbar navbar-expand-md py-3 navbar-light bg-white shadow rounded mt-3 mb-5">
-          <a class="navbar-brand span font-weight-bold" href="/">@lang('concept.ILNK')</a>
+          <a class="navbar-brand span font-weight-bold" href="/"><img width="50px" height="45px" src="{{ asset('assets/imgs/logo/lastilnkdard.png') }}" alt="@lang('concept.ILNK')"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -32,10 +32,16 @@
                   </li>
 
 
+                  <li class="nav-item mr-md-2"">
+                    <a href="{{ route('register') }}"><button class="btn btn-sm btn-secondary"
+                            style="height: 40px">@lang('concept.register')</button></a>
+                    </li>
+
                   <li class="nav-item">
                       <a href="{{ route('login') }}"><button class="btn btn-sm btn-primary"
                               style="height: 40px">@lang('concept.login')</button></a>
                   </li>
+
               </ul>
           </div>
       </nav>
