@@ -9,7 +9,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-md-auto d-block d-md-flex justify-content-center align-items-center">
                   <li class="nav-item mr-md-3" id="pTestNav">
-                      <a class="nav-link" href="{{ route('welcome') }}">@lang('concept.home')</a>
+                      <a class="nav-link" href="{{ route('home') }}">@lang('concept.home')</a>
                   </li>
 
                   {{-- <li class="nav-item mr-md-5" id="calculatorNav">

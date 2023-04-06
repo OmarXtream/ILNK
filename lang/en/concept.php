@@ -59,4 +59,6 @@ return [
     'maintenance' => 'Sorry, this section is under maintenance',
     'createPage' => 'Create Page',
     'myPage' => 'My page',
+    'myPageInfo' => 'My page details',
+
 ];
