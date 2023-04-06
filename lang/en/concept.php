@@ -57,4 +57,6 @@ return [
     'femele' => 'Femele',
     'activate' => 'Activate',
     'maintenance' => 'Sorry, this section is under maintenance',
+    'createPage' => 'Create Page',
+    'myPage' => 'My page',
 ];

@@ -1,6 +1,6 @@
       <!-- navbar -->
       <nav class="navbar navbar-expand-md py-3 navbar-light bg-white shadow rounded mt-3 mb-5">
-          <a class="navbar-brand span font-weight-bold" href="/"><img width="50px" height="45px" src="{{ asset('assets/imgs/logo/lastilnkdard.png') }}" alt="@lang('concept.ILNK')"></a>
+          <a class="navbar-brand span font-weight-bold" href="/"><img width="70px" height="45px" src="{{ asset('assets/imgs/logo/lastilnkdard.png') }}" alt="@lang('concept.ILNK')"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -12,9 +12,9 @@
                       <a class="nav-link" href="{{ route('welcome') }}">@lang('concept.home')</a>
                   </li>
 
-                  <li class="nav-item mr-md-5" id="calculatorNav">
-                      {{-- <a class="nav-link" href="{{ route('calculator') }}">@lang('concept.S-LC')</a> --}}
-                  </li>
+                  {{-- <li class="nav-item mr-md-5" id="calculatorNav">
+                      <a class="nav-link" href="{{ route('calculator') }}">@lang('concept.S-LC')</a>
+                  </li> --}}
                   <li class="nav-item dropdown mr-md-1">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

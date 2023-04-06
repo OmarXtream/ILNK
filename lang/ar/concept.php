@@ -56,6 +56,7 @@ return [
     'femele' => 'أنثى',
     'activate' => 'تفعيل',
     'maintenance' => 'عذراً ، هذا القسم تحت الصيانة',
-
+    'createPage' => 'إنشاء صفحة',
+    'myPage' => 'صفحتي',
 
 ];
