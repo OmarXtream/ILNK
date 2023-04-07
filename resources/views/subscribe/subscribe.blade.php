@@ -46,7 +46,7 @@
 
 
                         </div>
-                        <div class="button"><a class="btn btn-success btn-2" href="{{route('subscribe.payment',1)}}">@lang('subscribe.subscribe')</a></div>
+                        <div class="button"><a class="btn btn-success btn-2" href="{{route('subscribe.payment',"Free")}}">@lang('subscribe.subscribe')</a></div>
                       </div>
                     </div>
                     <!-- Single Price Plan Area-->
@@ -72,7 +72,7 @@
                           <p><i class="lni lni-checkmark-circle"></i> @lang('subscribe.QRprint')</p>
 
                         </div>
-                        <div class="button"><a class="btn btn-warning" href="{{route('subscribe.payment',2)}}">@lang('subscribe.subscribe')</a></div>
+                        <div class="button"><a class="btn btn-warning" href="{{route('subscribe.payment',"Plus")}}">@lang('subscribe.subscribe')</a></div>
                       </div>
                     </div>
                     <!-- Single Price Plan Area-->

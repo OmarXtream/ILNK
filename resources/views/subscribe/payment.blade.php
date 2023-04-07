@@ -18,13 +18,13 @@
 
                     <img src="{{ asset('assets/imgs/favorite-bookmark-star.svg')}}" class="img-fluid" alt="img">
                     <h4 class="mt-3">
-                        @if($planID == 1)
+                        @if($plan->name == "Free")
                         @lang('subscribe.free')
                         @else
                         @lang('subscribe.plus')
                         @endif
                     </h4>
-                    <h6 class="mb-3"> @lang('payment.cost'): {{$price}}</h6>
+                    <h6 class="mb-3"> @lang('payment.cost'): {{$plan->price}}</h6>
                     <!-- <ul class="list-group list-group-flush mb-3">
                         <li class="list-group-item bg-light">ميزة 1</li>
                         <li class="list-group-item bg-light">ميزة 2</li>
@@ -35,8 +35,10 @@
 
                 <div class="col-md-7 col-lg-8 bg-light rounded py-4 my-5 d-none animate__faster" id="p2">
                     <h4 class="mb-4 text-center">@lang('payment.paymentDetails')</h4>
-                    <form method="POST" action="{{ route('subscribe.pay',$planID) }}">
+                    <form method="POST" action="{{ route('subscribe.pay') }}">
                         @csrf
+                        
+                        <input type="hidden" name="plan" value="{{$plan->name}}">
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
                                 <label for="cFirstName">@lang('payment.fName')</label>

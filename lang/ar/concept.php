@@ -58,5 +58,7 @@ return [
     'createPage' => 'إنشاء صفحة',
     'myPage' => 'صفحتي',
     'myPageInfo' => 'بيانات صفحتي',
+    'renew' => 'تجديد الآن',
+
 
 ];

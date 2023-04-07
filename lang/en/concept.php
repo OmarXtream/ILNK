@@ -60,5 +60,7 @@ return [
     'createPage' => 'Create Page',
     'myPage' => 'My page',
     'myPageInfo' => 'My page details',
+    'renew' => 'Renew now ',
+
 
 ];

@@ -46,11 +46,39 @@
             
                 <div class="mt-5">
                     <div class="row">
-                        <div class="col-md-7 my-5 ml-auto text-dark">
+                        <div class="col-md-7 my-5 ml-auto text-dark">    
                             <h1>@lang('home.welcome')</h1>
                             <h4 class="text-muted mb-5">@lang('home.welcomeCreate')</h4>
-                            <a class="btn btn-primary mt-3 mx-2"
+
+                            @cannot('HasPlan')
+                            <a class="btn btn-primary mx-2"
                             href="{{route('subscribe.index')}}">@lang('concept.createPage')</a>
+                            @endcannot
+
+                            @can('HasPlan')
+                            <a class="btn btn-primary mx-2 mb-3"
+                            href="{{route('subscribe.index')}}">@lang('concept.myPage')</a>
+                            <p>
+                            @lang('home.active') {{ $currentSubscription?->expired_at->format('Y-m-d') }}
+                            </p>
+                            @endcan
+
+                            <p class="mt-2">
+                                @lang('home.CurrentMembership') : {{ $currentSubscription->plan->name ?? __('home.noActive') }}
+                                <a href="{{route('subscribe.index')}}"> <small>@lang('home.plan.upgrade')</small></a> 
+                            </p>
+    
+                            @cannot('HasPlan')
+                                @if(Auth::user()->lastSubscription())
+                                <p>
+                                @lang('home.renew.text')    
+                                </p>
+                                <a class="btn btn-primary mt-3 mx-2"
+                                href="{{route('subscribe.index')}}">@lang('concept.renew')</a>
+
+                                @endif
+                            @endcannot
+
                         </div>
                     </div>
                 </div>
