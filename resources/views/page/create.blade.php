@@ -2,7 +2,7 @@
 
 @section('ExtraCss')
 <link rel="stylesheet" href="{{ asset('assets/css/steps.css') }}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/dropzone.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.css">
 
 @endsection
 
@@ -45,9 +45,19 @@
 							<div class="row">
 
 								<div class="col-12 mb-3">
-									<label for="dropzone">@lang('page.bgImage')</label>
+									<label for="dropzone">@lang('page.logo')</label>
 									<form method="post" action="{{route('page.logo.store')}}" enctype="multipart/form-data" 
 									class="dropzone" id="dropzone">
+					 					 @csrf
+				  					</form>   
+				  
+								</div>
+
+								<hr>
+								<div class="col-12 mb-3">
+									<label for="dropzone">@lang('page.bgImage')</label>
+									<form method="post" action="{{route('page.bgImage.store')}}" enctype="multipart/form-data" 
+									class="dropzone" id="BGdropzone">
 					 					 @csrf
 				  					</form>   
 				  
@@ -108,11 +118,13 @@
 
 @endsection
 @section('scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.js"></script>
 <script type="text/javascript">
         Dropzone.options.dropzone =
          {
             maxFilesize: 12,
+            maxFiles: 1,
+            uploadMultiple :false,
             renameFile: function(file) {
                 var dt = new Date();
                 var time = dt.getTime();
@@ -152,6 +164,51 @@
             }
 };
 
+
+
+Dropzone.options.BGdropzone =
+         {
+            maxFilesize: 12,
+            maxFiles: 1,
+            uploadMultiple :false,
+            renameFile: function(file) {
+                var dt = new Date();
+                var time = dt.getTime();
+               return time+file.name;
+            },
+            acceptedFiles: ".jpeg,.jpg,.png,.gif",
+            addRemoveLinks: true,
+            timeout: 50000,
+            removedfile: function(file) 
+            {
+                var name = file.upload.filename;
+                $.ajax({
+                    headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                    type: 'POST',
+                    url: '{{route('page.bgImage.destory')}}',
+                    data: {filename: name},
+                    success: function (data){
+                        console.log("File has been successfully removed!!");
+                    },
+                    error: function(e) {
+                        console.log(e);
+                    }});
+                    var fileRef;
+                    return (fileRef = file.previewElement) != null ? 
+                    fileRef.parentNode.removeChild(file.previewElement) : void 0;
+            },
+       
+            success: function(file, response) 
+            {
+                console.log(response);
+            },
+            error: function(file, response)
+            {
+				console.log(response);
+            }
+};
 $(document).ready(function () {
 	//Enable Tooltips
 	var tooltipTriggerList = [].slice.call(

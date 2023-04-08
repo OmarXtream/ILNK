@@ -47,6 +47,32 @@ class PageController extends Controller
         return response()->json(['success'=>$imageName]);
     }
 
+
+    public function bgStore(Request $request)
+    {
+        $this->validate($request, [
+            'file' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048|dimensions:min_width=1,min_height=1',
+        ]);
+        $image = $request->file('file');
+        $imageName = time().'.'.$image->extension();
+
+        $destinationPath = Auth::user()->username . "-storage";
+
+        if(!Storage::disk('public')->exists($destinationPath)){
+            Storage::disk('public')->makeDirectory($destinationPath);
+        }
+        $imagegallery = Image::make($image)->stream();
+        Storage::disk('public')->put($destinationPath . '/'.$imageName, $imagegallery);
+
+        $imagelink = Storage::url($imageName);
+
+        
+        // $imageUpload = new ImageUpload();
+        // $imageUpload->filename = $imageName;
+        // $imageUpload->save();
+        return response()->json(['success'=>$imageName]);
+    }
+
     public function logoDestroy(Request $request)
     {
         // not secure

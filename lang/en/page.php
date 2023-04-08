@@ -13,6 +13,7 @@ return [
     |
     */
 
+    'logo' => 'Logo',
     'bgColor' => 'Background Color',
     'bgImage' => 'Background Image',
 ];

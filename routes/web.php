@@ -41,5 +41,8 @@ Route::get('myILNK', [App\Http\Controllers\User\PageController::class, 'index'])
 Route::post('myILNK/logo', [App\Http\Controllers\User\PageController::class, 'logoStore'])->name('page.logo.store');
 Route::post('myILNK/Rlogo', [App\Http\Controllers\User\PageController::class, 'logoDestroy'])->name('page.logo.destory');
 
+Route::post('myILNK/bgImage', [App\Http\Controllers\User\PageController::class, 'bgStore'])->name('page.bgImage.store');
+Route::post('myILNK/RbgImage', [App\Http\Controllers\User\PageController::class, 'bgDestroy'])->name('page.bgImage.destory');
+
 
 });
