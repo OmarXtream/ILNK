@@ -8,13 +8,17 @@
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-md-auto d-block d-md-flex justify-content-center align-items-center">
-                  <li class="nav-item mr-md-3" id="pTestNav">
+                  <li class="nav-item mr-md-3">
                       <a class="nav-link" href="{{ route('home') }}">@lang('concept.home')</a>
                   </li>
+                  @can('HasPlan')
 
-                  {{-- <li class="nav-item mr-md-5" id="calculatorNav">
-                      <a class="nav-link" href="">@lang('concept.S-LC')</a>
-                  </li> --}}
+                   <li class="nav-item mr-md-5">
+                      <a class="nav-link" href="{{route('page.index')}}">@lang('concept.myPage')</a>
+                  </li> 
+
+                  @endcan
+
                   <li class="nav-item dropdown mr-md-1">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -54,12 +58,12 @@
 
                       </div>
                   </li>
-                  @if (Auth::user()->role == 1)
+                  @cannot('HasPlan')
                       <li class="nav-item">
-                          <a href="{{ route('premium') }}"><button class="btn btn-sm btn-primary"
-                                  style="height: 40px">@lang('concept.subscribe')</button></a>
+                          <a href="{{ route('subscribe.index') }}"><button class="btn btn-sm btn-primary"
+                                  style="height: 40px">@lang('concept.createPage')</button></a>
                       </li>
-                  @endif
+                  @endcannot
               </ul>
           </div>
       </nav>

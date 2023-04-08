@@ -27,6 +27,7 @@ return [
     'registerTitle' => 'قم بتعبئة البيانات التالية لإتمام عملية التسجيل',
     'send' => 'إرسال',
     'next' => 'التالي',
+    'prev' => 'السابق',
     'dir' => 'rtl',
     'bootstrap' => 'https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css',
     'facebook' => 'بإستخدام فيسبوك',

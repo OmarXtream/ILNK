@@ -57,7 +57,7 @@
 
                             @can('HasPlan')
                             <a class="btn btn-primary mx-2 mb-3"
-                            href="{{route('subscribe.index')}}">@lang('concept.myPage')</a>
+                            href="{{route('page.index')}}">@lang('concept.myPage')</a>
                             <p>
                             @lang('home.active') {{ $currentSubscription?->expired_at->format('Y-m-d') }}
                             </p>
@@ -65,7 +65,7 @@
 
                             <p class="mt-2">
                                 @lang('home.CurrentMembership') : {{ $currentSubscription->plan->name ?? __('home.noActive') }}
-                                <a href="{{route('subscribe.index')}}"> <small>@lang('home.plan.upgrade')</small></a> 
+                                <a href="{{route('subscribe.index')}}"> <small class="text-primary">@lang('home.plan.upgrade')</small></a> 
                             </p>
     
                             @cannot('HasPlan')
@@ -88,10 +88,10 @@
       
 
              
-        {{-- <div class="section3 py-5 bg-light text-center">
-            <h1 class="span">{{ $answer_total }}</h1>
-            <h3>@lang('home.eYet')</h3>
-        </div> --}}
+         {{-- <div class="section3 py-5 bg-light text-center">
+            <h1 class="span">Powered By</h1>
+            <h3>HWE</h3>
+        </div>  --}}
     </div>
 
 

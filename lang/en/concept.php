@@ -27,6 +27,7 @@ return [
     'registerTitle' => 'Sign up to continue to ILNK',
     'send' => 'Send',
     'next' => 'Next !',
+    'prev' => 'Previous',
     'dir' => 'ltr',
     'bootstrap' => 'https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css',
     'facebook' => 'Login using Facebook',
@@ -58,7 +59,7 @@ return [
     'activate' => 'Activate',
     'maintenance' => 'Sorry, this section is under maintenance',
     'createPage' => 'Create Page',
-    'myPage' => 'My page',
+    'myPage' => 'MY ILNK',
     'myPageInfo' => 'My page details',
     'renew' => 'Renew now ',
 

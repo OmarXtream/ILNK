@@ -31,3 +31,15 @@ Route::post('subscribe', [App\Http\Controllers\SubscribeController::class, 'pay'
 
 
 });
+
+##### Auth & subscribed routes
+Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => ['subscribed']], function()
+{
+
+Route::get('myILNK', [App\Http\Controllers\User\PageController::class, 'index'])->name('page.index');
+
+Route::post('myILNK/logo', [App\Http\Controllers\User\PageController::class, 'logoStore'])->name('page.logo.store');
+Route::post('myILNK/Rlogo', [App\Http\Controllers\User\PageController::class, 'logoDestroy'])->name('page.logo.destory');
+
+
+});

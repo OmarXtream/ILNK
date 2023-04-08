@@ -61,7 +61,7 @@ span, .span {color: #1D2646 !important;}
     padding: 0.7rem 0.5rem;
     border: none;
   }
-.btn-primary:hover {background-color: #FEAB93 !important;}
+.btn-primary:hover {background-color: #C6C9D1 !important;}
 .btn-primary:active,.btn-primary:focus {box-shadow: 0 0 0 .2rem rgba(94,109,247, 0.5) !important;}
 .btn-secondary {
     background: #F8F8F8 !important;
