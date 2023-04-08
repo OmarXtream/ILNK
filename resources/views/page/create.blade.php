@@ -45,6 +45,7 @@
 							<div class="row">
 
 								<div class="col-12 mb-3">
+									<label for="dropzone">@lang('page.bgImage')</label>
 									<form method="post" action="{{route('page.logo.store')}}" enctype="multipart/form-data" 
 									class="dropzone" id="dropzone">
 					 					 @csrf
@@ -125,7 +126,7 @@
                 var name = file.upload.filename;
                 $.ajax({
                     headers: {
-                                'csrf-token': $('meta[name="_token"]').attr('content')
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },
                     type: 'POST',
                     url: '{{route('page.logo.destory')}}',

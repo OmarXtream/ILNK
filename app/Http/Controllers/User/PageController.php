@@ -49,11 +49,13 @@ class PageController extends Controller
 
     public function logoDestroy(Request $request)
     {
+        // not secure
         $filename =  $request->get('filename');
         $destinationPath = Auth::user()->username . "-storage";
 
         // ImageUpload::where('filename',$filename)->delete();
         $path=public_path().'/'.$destinationPath.'/'.$filename;
+        dd($path);
         if (file_exists($path)) {
             unlink($path);
         }

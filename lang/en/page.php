@@ -14,4 +14,5 @@ return [
     */
 
     'bgColor' => 'Background Color',
+    'bgImage' => 'Background Image',
 ];
