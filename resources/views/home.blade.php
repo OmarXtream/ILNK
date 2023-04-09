@@ -94,7 +94,10 @@
         </div>  --}}
     </div>
 
-
+    <footer class="bg-dark py-3 text-center text-white font-weight-bold print">
+        <a class="mx-2" href="https://HWE.sa" target="_blank"><img width="80px" height="40px" src="{{ asset('assets/imgs/logo/HWE.png') }}" alt="HWE"></a>
+        </footer> 
+    
     <!-- JavaScripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
