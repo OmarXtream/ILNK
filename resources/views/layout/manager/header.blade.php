@@ -6,15 +6,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="keywords" content="HTML, CSS, JavaScript, شركة, مؤسسة, خريطة, الحياة, خريطة الحياة, إختبار, شخصية, إختبار شخصية , شركة مسافات, مسافات">
-    <meta name="description" content="خريطة الحياة، إختبر شخصيتك على مستوى خمسة صفات رئيسية، إضافة لحسابة التعليم الذاتي التي ستساندك بتخطيط ما تقوم بفعله وتعلمه! ">
-    <meta name="author" content="Masafat | مسافات">
-    <meta name="robots" content="noindex, nofollow">
-    <meta property="og:title" content="خريطة الحياة | HayahMap">
-    <meta property="og:site_name" content="خريطة الحياة | HayahMap">
-    <meta property="og:description" content="خريطة الحياة، إختبر شخصيتك على مستوى خمسة صفات رئيسية، إضافة لحسابة التعليم الذاتي التي ستساندك بتخطيط ما تقوم بفعله وتعلمه! ">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="HayahMap.com">\
        <!-- <meta property="og:image" content="imgs/logo.png"> -->
 
     <!-- CSS -->
@@ -27,11 +18,11 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     @yield('ExtraCss')
 
-    <link rel="stylesheet" href="{{ asset('staff/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/staff/css/style.css') }}">
     <!-- other -->
     <!-- <link rel="icon" href="imgs/icon.png"> -->
 
-    <title>HayahMap | خريطة الحياة</title>
+    <title>ILNK | انا متصل</title>
 
 </head>
 
