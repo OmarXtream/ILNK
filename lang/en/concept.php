@@ -62,6 +62,13 @@ return [
     'myPage' => 'MY ILNK',
     'myPageInfo' => 'My page details',
     'renew' => 'Renew now ',
+    'title' => 'Title',
+    'link' => 'Link',
+    'img' => 'Image',
+    'account' => 'Account',
+    'theme' => 'ILNK Theme',
+    'socialmedia' => 'Social Media',
+
 
 
 ];

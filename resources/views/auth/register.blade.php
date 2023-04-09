@@ -17,7 +17,7 @@
                                     <label for="username">@lang('concept.username')</label>
                                     <div class="input-group">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="ILNKURL">https://ILNK.com/</span>
+                                        <span class="input-group-text" id="ILNKURL">https://ILNK.at/</span>
                                     </div>
     
                                     <input type="text" id="username" name="username"

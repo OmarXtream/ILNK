@@ -26,8 +26,27 @@ class PageController extends Controller
 
     public function create(Request $request)
     {
-        dd($request->all());
+        $this->validate($request, [
+            'bgColor' => ['bail', 'string', 'max:255','nullable'],
+            'des' => ['bail', 'string', 'max:255','nullable'],
+            'menuType' => ['bail','required', 'integer','between:1,2'],
+            'menuTitle' => ['bail', 'string', 'max:255','nullable'],
+            'menuLink' => ['bail', 'url', 'max:255','nullable'],
 
+        ]);
+
+
+        $newPage = Page::updateOrCreate([
+            'user_id'   => Auth::id(),
+        ],[
+            'bgColor' => $request->bgColor,
+            'des' => $request->des,
+            'menuType' => $request->menuType,
+            'menuTitle' => $request->menuTitle,
+            'menuLink' => $request->menuLink,
+        ]);
+
+        return redirect()->route('home');
     }
 
 

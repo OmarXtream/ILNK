@@ -17,5 +17,20 @@ return [
     'bgColor' => 'Background Color',
     'bgImage' => 'Background Image',
     'logoAndbg' => 'Background and Colors',
+    'menuAndappearance' => 'Menu and Appearance',
+    'des' => 'Short description',
+    'menuType' => 'Menu type',
+    'menu.directLink' => 'External',
+    'menu.interactive' => 'Interactive',
+    'addProduct' => 'Add Product',
+    'productInfo' => 'Product Info',
+    'defaultTheme' => 'Default Theme',
+    'addButton' => 'Add Button',
+    'socialMenu' => 'Social Media Buttons',
+    'platform' => 'Platform',
+
+    'CustomButtons' => 'Custom Buttons',
+    'ButtonsMenu' => 'Buttons List',
+
 
 ];
