@@ -24,6 +24,8 @@
         @if($user->page->menuType == 1)
         <a class="link" href="{{$user->page->menuLink}}" target="_blank">{{$user->page->menuTitle}}</a>
         @endif
+
+        
     </div>
 
     <!-- Javascript -->

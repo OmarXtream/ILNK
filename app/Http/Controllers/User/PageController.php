@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 use Intervention\Image\Facades\Image;
+use RealRashid\SweetAlert\Facades\Alert;
 
 use App\Models\Page;
 
@@ -29,7 +30,7 @@ class PageController extends Controller
         $this->validate($request, [
             'bgColor' => ['bail', 'string', 'max:255','nullable'],
             'des' => ['bail', 'string', 'max:255','nullable'],
-            'menuType' => ['bail','required', 'integer','between:1,2'],
+            'menuType' => ['bail', 'integer','between:1,2'],
             'menuTitle' => ['bail', 'string', 'max:255','nullable'],
             'menuLink' => ['bail', 'url', 'max:255','nullable'],
 
@@ -45,6 +46,8 @@ class PageController extends Controller
             'menuTitle' => $request->menuTitle,
             'menuLink' => $request->menuLink,
         ]);
+
+        alert()->success(__("concept.success"));
 
         return redirect()->route('home');
     }

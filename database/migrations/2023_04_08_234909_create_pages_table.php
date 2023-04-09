@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('bgColor')->nullable();
             $table->string('bgImg')->nullable();
 
-            $table->tinyInteger('menuType')->default(1)->comment(' 1=> Link , 2 => interactive');
+            $table->tinyInteger('menuType')->default(1)->comment(' 1=> Link , 2 => interactive')->nullable();
             $table->string('menuLink')->nullable();
             $table->string('menuTitle')->nullable();
 

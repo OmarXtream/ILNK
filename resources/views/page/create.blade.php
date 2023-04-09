@@ -146,7 +146,7 @@ input[type="radio"]{
                                     <label for="bgColor">@lang('page.bgColor')</label>
                                     <input type="text" id="bgColor" name="bgColor"
                                         class="coloris instance form-control @error('bgColor') is-invalid @enderror"
-                                        value="{{ old('bgColor') }}" placeholder="#fff" required>
+                                        value="{{ old('bgColor') }}" placeholder="#fff">
                                     @error('bgColor')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -222,7 +222,7 @@ input[type="radio"]{
                                         <label for="menuTitle">@lang('concept.title')</label>
                                         <input type="text" id="menuTitle" name="menuTitle"
                                             class="form-control @error('menuTitle') is-invalid @enderror"
-                                            value="{{ old('menuTitle') }}" placeholder="@lang('concept.title')" required>
+                                            value="{{ old('menuTitle') }}" placeholder="@lang('concept.title')">
                                         @error('menuTitle')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -233,7 +233,7 @@ input[type="radio"]{
                                         <label class="mt-2" for="menuLink">@lang('concept.link')</label>
                                         <input type="text" id="menuLink" name="menuLink"
                                             class="form-control @error('menuLink') is-invalid @enderror"
-                                            value="{{ old('menuLink') }}" placeholder="@lang('concept.link')" required>
+                                            value="{{ old('menuLink') }}" placeholder="@lang('concept.link')">
                                         @error('menuLink')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
