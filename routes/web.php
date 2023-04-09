@@ -45,4 +45,7 @@ Route::post('myILNK/bgImage', [App\Http\Controllers\User\PageController::class, 
 Route::post('myILNK/RbgImage', [App\Http\Controllers\User\PageController::class, 'bgDestroy'])->name('page.bgImage.destory');
 
 
+Route::post('myILNK/create', [App\Http\Controllers\User\PageController::class, 'create'])->name('page.create');
+
+
 });

@@ -3,13 +3,19 @@
 @section('ExtraCss')
 <link rel="stylesheet" href="{{ asset('assets/css/steps.css') }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css"/>
 
 @endsection
 
 @section('content')
         <!-- page-content -->
         <div class="page-content mb-4">
-         
+            @if (Session::has('errors'))
+            <div class="text-center alert alert-danger mt-3">
+                {{ Session::get('errors')->first() }}
+            </div>
+            @endif
+
             <div class="container">
                 <div class="wizard my-5">
                     <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
@@ -37,7 +43,7 @@
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" role="tabpanel" id="step1" aria-labelledby="step1-tab">
                             
-                            <h3 class="mt-4">الشعار والخلفية</h3>
+                            <h3 class="mt-4">@lang('page.logoAndbg')</h3>
 							<div class="row justify-content-center align-items-center h-100">
 								<div class="col-md-8 bg-light rounded py-4 my-5">					
 							<div class="form-row">
@@ -62,11 +68,12 @@
 				  					</form>   
 				  
 								</div>
-
+                                <form method="post" action="{{route('page.create')}}">
+                                    @csrf
                                 <div class="col-12 mb-3">
                                     <label for="bgColor">@lang('page.bgColor')</label>
                                     <input type="text" id="bgColor" name="bgColor"
-                                        class="form-control @error('bgColor') is-invalid @enderror"
+                                        class="coloris instance form-control @error('bgColor') is-invalid @enderror"
                                         value="{{ old('bgColor') }}" placeholder="#fff" required>
                                     @error('bgColor')
                                         <span class="invalid-feedback" role="alert">
@@ -111,6 +118,9 @@
                                 <button class="btn btn-primary next">Submit <i class="fas fa-angle-right"></i></button>
                             </div>
                         </div>
+
+                    </form>
+
                     </div>
                 </div>
             </div>
@@ -119,8 +129,25 @@
 @endsection
 @section('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.js"></script>
-<script type="text/javascript">
+<script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script>
 
+<script type="text/javascript">
+    Coloris({
+      el: '.coloris',
+      swatches: [
+        '#264653',
+        '#2a9d8f',
+        '#e9c46a',
+        '#f4a261',
+        '#e76f51',
+        '#d62828',
+        '#023e8a',
+        '#0077b6',
+        '#0096c7',
+        '#00b4d8',
+        '#48cae4'
+      ]
+    });
    
         Dropzone.options.dropzone =
          {

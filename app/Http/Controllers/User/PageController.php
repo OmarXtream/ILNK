@@ -24,6 +24,14 @@ class PageController extends Controller
         return view('page.create');
     }
 
+    public function create(Request $request)
+    {
+        dd($request->all());
+
+    }
+
+
+
     public function logoStore(Request $request)
     {
         $this->validate($request, [
