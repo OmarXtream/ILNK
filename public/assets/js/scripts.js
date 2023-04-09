@@ -68,7 +68,7 @@ if (window.XMLHttpRequest) {
 
 const toast = swal.mixin({
     toast: true,
-    position: "bottom-end",
+    position: "top-end",
     showConfirmButton: false,
     timer: 3000,
 });

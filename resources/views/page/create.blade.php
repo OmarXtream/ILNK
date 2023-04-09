@@ -120,6 +120,8 @@
 @section('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.js"></script>
 <script type="text/javascript">
+
+   
         Dropzone.options.dropzone =
          {
             maxFilesize: 12,
@@ -144,7 +146,10 @@
                     url: '{{route('page.logo.destory')}}',
                     data: {filename: name},
                     success: function (data){
-                        console.log("File has been successfully removed!!");
+                        new toast({
+                            icon: 'success',
+                            title: '@lang("concept.success")'
+                            });
                     },
                     error: function(e) {
                         console.log(e);
@@ -156,11 +161,21 @@
        
             success: function(file, response) 
             {
-                console.log(response);
-            },
+        $.each(response.m,function(key,val) {
+            swal.fire({
+            title: val,
+            icon: response.tp,
+            showConfirmButton: false,
+        });
+            });
+
+        },
             error: function(file, response)
-            {
-				console.log(response);
+            {                
+            new toast({
+            icon: 'error',
+            title: response.message
+            });
             }
 };
 
@@ -190,8 +205,11 @@ Dropzone.options.BGdropzone =
                     url: '{{route('page.bgImage.destory')}}',
                     data: {filename: name},
                     success: function (data){
-                        console.log("File has been successfully removed!!");
-                    },
+                        new toast({
+                            icon: 'success',
+                            title: '@lang("concept.success")'
+                            });
+                                            },
                     error: function(e) {
                         console.log(e);
                     }});
@@ -202,11 +220,21 @@ Dropzone.options.BGdropzone =
        
             success: function(file, response) 
             {
-                console.log(response);
-            },
+                $.each(response.m,function(key,val) {
+                    swal.fire({
+                    title: val,
+                    icon: response.tp,
+                    showConfirmButton: false,
+                });
+            });
+
+        },
             error: function(file, response)
-            {
-				console.log(response);
+            {                
+            new toast({
+            icon: 'error',
+            title: response.message
+            });
             }
 };
 $(document).ready(function () {

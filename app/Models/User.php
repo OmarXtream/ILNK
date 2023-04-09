@@ -10,6 +10,8 @@ use Laravel\Sanctum\HasApiTokens;
 
 use LucasDotVin\Soulbscription\Models\Concerns\HasSubscriptions;
 
+use Illuminate\Database\Eloquent\Relations\HasOne;
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable,HasSubscriptions;
@@ -44,4 +46,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function page(): HasOne
+    {
+        return $this->hasOne(Page::class);
+    }
 }

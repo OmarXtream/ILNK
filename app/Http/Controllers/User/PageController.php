@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Storage;
 
 use Intervention\Image\Facades\Image;
 
+use App\Models\Page;
+
 use Auth;
 class PageController extends Controller
 {
@@ -25,67 +27,86 @@ class PageController extends Controller
     public function logoStore(Request $request)
     {
         $this->validate($request, [
-            'file' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048|dimensions:min_width=1,min_height=1',
+            'file' => 'required|bail|image|mimes:jpg,jpeg,png,gif|mimetypes:image/png,image/jpeg,image/gif|max:2048|dimensions:min_width=1,min_height=1',
         ]);
         $image = $request->file('file');
-        $imageName = time().'.'.$image->extension();
+        $imageName = uniqid().'.'.$image->extension();
 
-        $destinationPath = Auth::user()->username . "-storage";
+        $destinationPath = Auth::user()->username;
 
         if(!Storage::disk('public')->exists($destinationPath)){
             Storage::disk('public')->makeDirectory($destinationPath);
         }
-        $imagegallery = Image::make($image)->stream();
-        Storage::disk('public')->put($destinationPath . '/'.$imageName, $imagegallery);
+        if($image->extension() != 'gif'){
+        $imageFinal = Image::make($image)->stream();
+        }else{
+        $imageFinal = File::get($image);
+        }
+        Storage::disk('public')->put($destinationPath . '/'.$imageName, $imageFinal);
 
-        $imagelink = Storage::url($imageName);
+        $imagelink = Storage::url($destinationPath.'/'.$imageName);
 
+        $newPage = Page::updateOrCreate([
+            'user_id'   => Auth::id(),
+        ],[
+            'logo'     => $imageName,
+        ]);
+
+
+        return response()->json([
         
-        // $imageUpload = new ImageUpload();
-        // $imageUpload->filename = $imageName;
-        // $imageUpload->save();
-        return response()->json(['success'=>$imageName]);
+            'tp' => 'success',
+            'm' => ['success' => __('concept.success') ],
+            
+        ]);
     }
 
 
     public function bgStore(Request $request)
     {
         $this->validate($request, [
-            'file' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048|dimensions:min_width=1,min_height=1',
+            'file' => 'required|bail|image|mimes:jpg,jpeg,png,gif|mimetypes:image/png,image/jpeg,image/gif|max:2048|dimensions:min_width=1,min_height=1',
         ]);
         $image = $request->file('file');
-        $imageName = time().'.'.$image->extension();
+        $imageName = uniqid().'.'.$image->extension();
 
-        $destinationPath = Auth::user()->username . "-storage";
+        $destinationPath = Auth::user()->username;
 
         if(!Storage::disk('public')->exists($destinationPath)){
             Storage::disk('public')->makeDirectory($destinationPath);
         }
-        $imagegallery = Image::make($image)->stream();
-        Storage::disk('public')->put($destinationPath . '/'.$imageName, $imagegallery);
+        if($image->extension() != 'gif'){
+        $imageFinal = Image::make($image)->stream();
+        }else{
+        $imageFinal = File::get($image);
+        }
+        Storage::disk('public')->put($destinationPath . '/'.$imageName, $imageFinal);
 
-        $imagelink = Storage::url($imageName);
+        $imagelink = Storage::url($destinationPath.'/'.$imageName);
 
+        $newPage = Page::updateOrCreate([
+            'user_id'   => Auth::id(),
+        ],[
+            'bgImg'     => $imageName,
+        ]);
+
+
+        return response()->json([
         
-        // $imageUpload = new ImageUpload();
-        // $imageUpload->filename = $imageName;
-        // $imageUpload->save();
-        return response()->json(['success'=>$imageName]);
-    }
+            'tp' => 'success',
+            'm' => ['success' => __('concept.success') ],
+            
+        ]);
+        }
 
     public function logoDestroy(Request $request)
     {
-        // not secure
-        $filename =  $request->get('filename');
-        $destinationPath = Auth::user()->username . "-storage";
+        $pageLogo = Auth::user()->page()->first()->logo;
 
-        // ImageUpload::where('filename',$filename)->delete();
-        $path=public_path().'/'.$destinationPath.'/'.$filename;
-        dd($path);
-        if (file_exists($path)) {
-            unlink($path);
+        if(Storage::exists($pageLogo)){
+            Storage::delete($pageLogo);
         }
-        return $filename;  
+        return $pageLogo;  
     }
 
 }
