@@ -130,10 +130,33 @@ class PageController extends Controller
     {
         $pageLogo = Auth::user()->page()->first()->logo;
 
-        if(Storage::exists($pageLogo)){
-            Storage::delete($pageLogo);
-        }
+        Storage::delete(Auth::user()->username."/".$pageLogo);
+        
+
+        $page = Page::updateOrCreate([
+            'user_id'   => Auth::id(),
+        ],[
+            'logo'     => null,
+        ]);
+
         return $pageLogo;  
+    }
+
+
+    public function bgDestroy(Request $request)
+    {
+        $pageBG = Auth::user()->page()->first()->bgImg;
+
+        Storage::delete(Auth::user()->username."/".$pageBG);
+        
+
+        $page = Page::updateOrCreate([
+            'user_id'   => Auth::id(),
+        ],[
+            'bgImg'     => null,
+        ]);
+
+        return $pageBG;  
     }
 
 }

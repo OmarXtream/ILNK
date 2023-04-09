@@ -91,22 +91,22 @@ input[type="radio"]{
             <div class="container">
                 <div class="wizard my-5">
                     <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
-                        <li class="nav-item flex-fill" role="presentation" data-bs-toggle="tooltip" data-bs-placement="top" title="Step 1">
+                        <li class="nav-item flex-fill" role="presentation" data-bs-toggle="tooltip" data-bs-placement="top" title="@lang('page.logoAndbg')">
                             <a class="nav-link active rounded-circle mx-auto d-flex align-items-center justify-content-center" href="#step1" id="step1-tab" data-bs-toggle="tab" role="tab" aria-controls="step1" aria-selected="true">
                                 <i class="fas fa-image"></i>
                             </a>
                         </li>
-                        <li class="nav-item flex-fill" role="presentation" data-bs-toggle="tooltip" data-bs-placement="top" title="Step 2">
+                        <li class="nav-item flex-fill" role="presentation" data-bs-toggle="tooltip" data-bs-placement="top" title="@lang('page.menuAndappearance')">
                             <a class="nav-link rounded-circle mx-auto d-flex align-items-center justify-content-center" href="#step2" id="step2-tab" data-bs-toggle="tab" role="tab" aria-controls="step2" aria-selected="false" title="Step 2">
                                 <i class="fas fa-star"></i>
                             </a>
                         </li>
-                        <li class="nav-item flex-fill" role="presentation" data-bs-toggle="tooltip" data-bs-placement="top" title="Step 3">
+                        <li class="nav-item flex-fill" role="presentation" data-bs-toggle="tooltip" data-bs-placement="top" title="@lang('concept.socialmedia')">
                             <a class="nav-link rounded-circle mx-auto d-flex align-items-center justify-content-center" href="#step3" id="step3-tab" data-bs-toggle="tab" role="tab" aria-controls="step3" aria-selected="false" title="Step 3">
                                 <i class="fas fa-share-alt"></i>
                             </a>
                         </li>
-                        <li class="nav-item flex-fill" role="presentation" data-bs-toggle="tooltip" data-bs-placement="top" title="Step 4">
+                        <li class="nav-item flex-fill" role="presentation" data-bs-toggle="tooltip" data-bs-placement="top" title="@lang('page.CustomButtons')">
                             <a class="nav-link rounded-circle mx-auto d-flex align-items-center justify-content-center" href="#step4" id="step4-tab" data-bs-toggle="tab" role="tab" aria-controls="step4" aria-selected="false" title="Step 4">
                                 <i class="fas fa-flag-checkered"></i>
                             </a>
@@ -284,7 +284,7 @@ input[type="radio"]{
                                         </thead>
                                         <tbody class="text-center">
                                           <tr>
-                                            <td><i class="fab fa-twitter" aria-hidden="true"></i></td>
+                                            <td><i class="fab fa-twitter text-info" aria-hidden="true"></i></td>
                                             <td>اضغط لزيارة تويتر</td>
                                             <td>https://twitter.com/OmarXtream</td>
                                           </tr>

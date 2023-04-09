@@ -49,3 +49,8 @@ Route::post('myILNK/create', [App\Http\Controllers\User\PageController::class, '
 
 
 });
+
+##### Guest Routes
+
+
+Route::get('/{user:username}', [App\Http\Controllers\User\GuestController::class, 'showPage'])->name('page.guest');

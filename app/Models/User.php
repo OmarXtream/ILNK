@@ -52,4 +52,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(Page::class);
     }
+
+    public function url(){
+        return \Config::get('APP_URL')."/".$this->username;
+    }
 }
