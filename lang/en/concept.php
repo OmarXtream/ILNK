@@ -68,7 +68,9 @@ return [
     'account' => 'Account',
     'theme' => 'ILNK Theme',
     'socialmedia' => 'Social Media',
-
+    'remove' => 'Delete',
+    'sure' => 'Are you sure?',
+    'notRecoverAble' => 'You will not be able to revert this!',
 
 
 ];

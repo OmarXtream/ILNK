@@ -12,6 +12,7 @@ use Intervention\Image\Facades\Image;
 use RealRashid\SweetAlert\Facades\Alert;
 
 use App\Models\Page;
+use App\Models\socialButton;
 
 use Auth;
 class PageController extends Controller
@@ -24,11 +25,13 @@ class PageController extends Controller
     public function index(){
         if(Auth::user()->page){
             $page = Auth::user()->page;
+            $socialButtons = socialButton::where('page_id',$page->id)->get();
         }else{
             $page = null;
+            $socialButtons = array(); // empty
         }
 
-        return view('page.create',compact('page'));
+        return view('page.create',compact('page','socialButtons'));
     }
 
     public function create(Request $request)
@@ -167,5 +170,61 @@ class PageController extends Controller
 
         return $pageBG;  
     }
+
+    public function createSocial(Request $request){
+
+        $this->validate($request, [
+            'pTitle' => ['bail', 'string', 'max:255','required'],
+            'link' => ['bail', 'string', 'max:255','url','required'],
+            'platform' => ['bail', 'integer','between:1,11','required'],
+
+        ]);
+
+        if(!Auth::user()->page){
+            $page = Page::updateOrCreate([
+                'user_id'   => Auth::id(),
+            ],[
+                'status'     => 1,
+            ]);
+        }else{
+            $page = Auth::user()->page;
+        }
+
+        $button = $page->socialButtons()->create([
+            'title' => $request->pTitle,
+            'url' => $request->link,
+            'platform' => $request->platform,
+        ]);
+        
+        return response()->json([
+            'Ttype' => 'social',
+            'title' => $request->pTitle,
+            'url' => $request->link,
+            'tp' => 'success',
+            'm' => ['success' => __('concept.success') ],
+            
+        ]);
+
+    }
+
+    public function DeleteSocial(Request $request){
+
+        $this->validate($request, [
+            'id' => ['bail', 'integer','exists:social_buttons,id','required'],
+        ]);
+
+        $button = socialButton::where('id',$request->id)->where('page_id',Auth::user()->page->id)->first();
+
+        $button->delete();
+        
+
+        return response()->json([
+            'tp' => 'success',
+            'm' => ['success' => __('concept.success') ],
+            
+        ]);
+    }
+
+
 
 }

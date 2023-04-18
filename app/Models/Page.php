@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Page extends Model
 {
@@ -54,4 +55,11 @@ class Page extends Model
     public function bgPath(){
         return \Storage::url($this->user->username."/".$this->bgImg);
     }
+
+
+    public function socialButtons(): HasMany
+    {
+        return $this->hasMany(socialButton::class);
+    }
+
 }

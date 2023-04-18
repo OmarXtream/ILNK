@@ -202,14 +202,7 @@ input[type="radio"]{
 
                                 <div class="col-12 mb-3">
                                     <label for="menuType">@lang('page.menuType') :</label>
-                                    {{-- <input class="form-control" type="radio" name="menuType" 
-                                            value="directLink"> @lang('page.menu.directLink')
-                                    <input class="form-control" type="radio" name="menuType" 
-                                    value="interactive"> @lang('page.menu.interactive') --}}                              
-
-
                                     <div class="wrapper">
-                                        
                                         <input type="radio" name="menuType" 
                                         value="1" id="option-1">
                                         <input type="radio" name="menuType" 
@@ -275,12 +268,12 @@ input[type="radio"]{
                               </button>
 
                             <div class="row justify-content-center align-items-center h-100">
-								<div class="col-md-8 bg-light rounded py-4 my-5">					
-							<div class="row d-flex justify-content-center">
+                        <div class="col-md-8 bg-light rounded py-4 my-5">					
+                      <div class="row d-flex justify-content-center">
 					
                                 <div class="col-12 mb-3">
                                     <h5 class="text-center mb-2">@lang('page.socialMenu')</h5>
-                                    <table class="table table-bordered">
+                                    <table class="table table-bordered" id="socialTable">
                                         <thead>
                                           <tr>
                                             <th scope="col">#</th>
@@ -289,12 +282,16 @@ input[type="radio"]{
                                           </tr>
                                         </thead>
                                         <tbody class="text-center">
-                                          <tr>
-                                            <td><i class="fab fa-twitter text-info" aria-hidden="true"></i></td>
-                                            <td>اضغط لزيارة تويتر</td>
-                                            <td>https://twitter.com/OmarXtream</td>
+                                          @foreach($socialButtons as $btn)
+                                          <tr id="s-{{$btn->id}}">
+                                            <td><i class="{{$btn->Icon()}}" aria-hidden="true"></i></td>
+                                            <td>{{$btn->title}}</td>
+                                            <td>{{$btn->url}}</td>
+                                            <td> <button type="button" onclick="DeleteS({{$btn->id}})" class="btn btn-danger text-white"><i class="fa fa-times"></i> </button></td>
+
                                           </tr>
-                                        
+                                          @endforeach
+
                                         </tbody>
                                       </table>
                 
@@ -312,7 +309,7 @@ input[type="radio"]{
                         <div class="tab-pane fade" role="tabpanel" id="step4" aria-labelledby="step4-tab">
                             
                             <h3 class="mt-4">@lang('page.CustomButtons')</h3>
-                            <button type="button" class="btn btn-primary mt-2" data-toggle="modal" data-target="#createSocial">
+                            <button type="button" class="btn btn-primary mt-2" data-toggle="modal" data-target="#createButton">
                                 @lang('page.addButton') <i class="fas fa-plus"></i>
                               </button>
 
@@ -403,7 +400,7 @@ input[type="radio"]{
 
                     <div class="modal-body">
 
-                        <form onsubmit="return false;">
+                        <form id="socialForm" onsubmit="Create('{{route('page.SocialCreate')}}','socialForm','createSocial'); return false;">
                         <div class="form-row">
                                     <div class="w-100 mb-3">
                                         <label for="pTitle" class="w-100 mb-2"> @lang('concept.title') </label>
@@ -426,12 +423,13 @@ input[type="radio"]{
     
                                     </div>
                         </div>
-                      </form>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('concept.cancel')</button>
                       <button type="submit" class="btn btn-primary">@lang('concept.send')</button>
                     </div>
+                  </form>
+
                   </div>
                 </div>
               </div>
@@ -486,6 +484,87 @@ input[type="radio"]{
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script>
 <script>
+
+function Create(route,formID,modelID){
+    var form = $('#'+formID);
+sendData(route , form.serialize())
+    .then(function(response) {
+        if (response.tp == 'success') {
+            $('#'+modelID).modal('hide');
+            form[0].reset();
+
+            if(response.Ttype == 'social'){
+              var table = document.getElementById("socialTable");
+              var row = table.insertRow(-1);
+              var cell1 = row.insertCell(0);
+              var cell2 = row.insertCell(1);
+              var cell3 = row.insertCell(2);
+              var cell4 = row.insertCell(3);
+
+              cell1.innerHTML = "<i class='fa fa-spinner text-muted'></i>";
+              cell2.innerHTML = response.title;
+              cell3.innerHTML = response.url;
+              cell4.innerHTML = '-';
+
+              // Add animation using animateCSS
+              row.classList.add("animate__animated", "animate__fadeIn");
+
+            }
+            console.log('Created Successfuly');
+
+            $.each(response.m,function(key,val) {
+                    swal.fire({
+                    title: val,
+                    icon: response.tp,
+                    showConfirmButton: false,
+                });
+            });
+        }else{
+          new toast({
+            icon: 'error',
+            title: response.message
+            });
+        }
+    });
+    }
+
+
+    function DeleteS(id){
+        swal.fire({
+                title: '@lang("concept.sure")',
+                text: '@lang("concept.notRecoverAble")',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: '@lang("concept.cancel")',
+                confirmButtonText: '@lang("concept.yes")'
+            }).then((result) => {
+                if (result.value) {
+    sendData("{{route('page.SocialDelete')}}","id="+id)
+    .then(function(response)
+    {
+      $.each(response.m,function(key,val) {
+        new toast({
+            icon: response.tp,
+            title: val
+            });
+        });
+    
+     if(response.tp == 'success')
+    {
+        animateCSS('#s-'+id, 'fadeOutUp').then((message) => {
+            $('#s-'+id).remove();
+            });
+        console.log('Removed Successfuly');
+    }
+    });
+            }
+        });
+    }
+
+
+    // _______________
     $(document).ready(function () {
         $('input[type="radio"]').click(function() {
                     var inputValue = $(this).attr("value");

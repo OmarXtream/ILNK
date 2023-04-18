@@ -46,6 +46,8 @@ Route::post('myILNK/RbgImage', [App\Http\Controllers\User\PageController::class,
 
 
 Route::post('myILNK/create', [App\Http\Controllers\User\PageController::class, 'create'])->name('page.create');
+Route::post('myILNK/SocialCreate', [App\Http\Controllers\User\PageController::class, 'createSocial'])->name('page.SocialCreate');
+Route::post('myILNK/SocialDelete', [App\Http\Controllers\User\PageController::class, 'DeleteSocial'])->name('page.SocialDelete');
 
 
 });
