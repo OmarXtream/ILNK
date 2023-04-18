@@ -119,7 +119,9 @@ input[type="radio"]{
 							<div class="row justify-content-center align-items-center h-100">
 								<div class="col-md-8 bg-light rounded py-4 my-5">					
 							<div class="form-row">
-
+                @if($page && $page->logo)  
+                <img class="mx-auto rounded-circle" src="{{@$page->logoPath()}}" alt="logo" width="304" height="236">
+                @endif
 							<div class="row">
 
 								<div class="col-12 mb-3">
@@ -132,6 +134,10 @@ input[type="radio"]{
 								</div>
 
 								<hr>
+                @if($page && $page->bgImg)  
+                <img class="mx-auto rounded-circle" src="{{@$page->bgPath()}}" alt="logo" width="304" height="236">
+                @endif
+
 								<div class="col-12 mb-3">
 									<label for="dropzone">@lang('page.bgImage')</label>
 									<form method="post" action="{{route('page.bgImage.store')}}" enctype="multipart/form-data" 
@@ -146,7 +152,7 @@ input[type="radio"]{
                                     <label for="bgColor">@lang('page.bgColor')</label>
                                     <input type="text" id="bgColor" name="bgColor"
                                         class="coloris instance form-control @error('bgColor') is-invalid @enderror"
-                                        value="{{ old('bgColor') }}" placeholder="#fff">
+                                        value="{{ old('bgColor') ? old('bgColor') : @$page->bgColor}}" placeholder="#fff">
                                     @error('bgColor')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -178,7 +184,8 @@ input[type="radio"]{
                                     <label for="des">@lang('page.des')</label>
                                     <textarea id="des" name="des"
                                         class="form-control @error('des') is-invalid @enderror"
-                                         placeholder="..." >{{ old('des') }}</textarea>
+                                         placeholder="..." >{{ old('des') ? old('des') : @$page->des}}
+                                        </textarea>
                                     @error('des')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -222,7 +229,7 @@ input[type="radio"]{
                                         <label for="menuTitle">@lang('concept.title')</label>
                                         <input type="text" id="menuTitle" name="menuTitle"
                                             class="form-control @error('menuTitle') is-invalid @enderror"
-                                            value="{{ old('menuTitle') }}" placeholder="@lang('concept.title')">
+                                            value="{{ old('menuTitle') ? old('menuTitle') : @$page->menuTitle}}" placeholder="@lang('concept.title')">
                                         @error('menuTitle')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -233,7 +240,7 @@ input[type="radio"]{
                                         <label class="mt-2" for="menuLink">@lang('concept.link')</label>
                                         <input type="text" id="menuLink" name="menuLink"
                                             class="form-control @error('menuLink') is-invalid @enderror"
-                                            value="{{ old('menuLink') }}" placeholder="@lang('concept.link')">
+                                            value="{{ old('menuLink') ? old('menuLink') : @$page->menuLink}}" placeholder="@lang('concept.link')">
                                         @error('menuLink')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

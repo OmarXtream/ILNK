@@ -22,7 +22,13 @@ class PageController extends Controller
     }
 
     public function index(){
-        return view('page.create');
+        if(Auth::user()->page){
+            $page = Auth::user()->page;
+        }else{
+            $page = null;
+        }
+
+        return view('page.create',compact('page'));
     }
 
     public function create(Request $request)
