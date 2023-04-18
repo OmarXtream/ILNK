@@ -184,8 +184,7 @@ input[type="radio"]{
                                     <label for="des">@lang('page.des')</label>
                                     <textarea id="des" name="des"
                                         class="form-control @error('des') is-invalid @enderror"
-                                         placeholder="..." >{{ old('des') ? old('des') : @$page->des}}
-                                        </textarea>
+                                         placeholder="..." >{{ old('des') ? old('des') : @$page->des}}</textarea>
                                     @error('des')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
