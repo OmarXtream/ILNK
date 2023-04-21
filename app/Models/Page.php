@@ -62,4 +62,9 @@ class Page extends Model
         return $this->hasMany(socialButton::class);
     }
 
+    public function customButtons(): HasMany
+    {
+        return $this->hasMany(customButton::class);
+    }
+
 }

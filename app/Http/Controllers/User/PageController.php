@@ -13,6 +13,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 use App\Models\Page;
 use App\Models\socialButton;
+use App\Models\customButton;
 
 use Auth;
 class PageController extends Controller
@@ -26,12 +27,16 @@ class PageController extends Controller
         if(Auth::user()->page){
             $page = Auth::user()->page;
             $socialButtons = socialButton::where('page_id',$page->id)->get();
+            $customButtons = customButton::where('page_id',$page->id)->get();
+
         }else{
             $page = null;
             $socialButtons = array(); // empty
+            $customButtons = array(); // empty
+
         }
 
-        return view('page.create',compact('page','socialButtons'));
+        return view('page.create',compact('page','socialButtons','customButtons'));
     }
 
     public function create(Request $request)
@@ -210,10 +215,67 @@ class PageController extends Controller
     public function DeleteSocial(Request $request){
 
         $this->validate($request, [
-            'id' => ['bail', 'integer','exists:social_buttons,id','required'],
+            'id' => ['bail', 'integer','required','exists:social_buttons,id'],
         ]);
 
         $button = socialButton::where('id',$request->id)->where('page_id',Auth::user()->page->id)->first();
+
+        $button->delete();
+        
+
+        return response()->json([
+            'tp' => 'success',
+            'm' => ['success' => __('concept.success') ],
+            
+        ]);
+    }
+
+
+
+
+
+    public function createButton(Request $request){
+
+        $this->validate($request, [
+            'pTitle' => ['bail', 'string', 'max:255','required'],
+            'link' => ['bail', 'string', 'max:255','url','required'],
+
+        ]);
+
+        if(!Auth::user()->page){
+            $page = Page::updateOrCreate([
+                'user_id'   => Auth::id(),
+            ],[
+                'status'     => 1,
+            ]);
+        }else{
+            $page = Auth::user()->page;
+        }
+
+        $button = $page->customButtons()->create([
+            'title' => $request->pTitle,
+            'url' => $request->link,
+        ]);
+        
+        return response()->json([
+            'Ttype' => 'custom',
+            'title' => $request->pTitle,
+            'url' => $request->link,
+            'tp' => 'success',
+            'm' => ['success' => __('concept.success') ],
+            
+        ]);
+
+    }
+
+
+    public function DeleteButton(Request $request){
+
+        $this->validate($request, [
+            'id' => ['bail', 'integer','required','exists:custom_buttons,id'],
+        ]);
+
+        $button = customButton::where('id',$request->id)->where('page_id',Auth::user()->page->id)->first();
 
         $button->delete();
         

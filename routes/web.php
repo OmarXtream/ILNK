@@ -49,6 +49,9 @@ Route::post('myILNK/create', [App\Http\Controllers\User\PageController::class, '
 Route::post('myILNK/SocialCreate', [App\Http\Controllers\User\PageController::class, 'createSocial'])->name('page.SocialCreate');
 Route::post('myILNK/SocialDelete', [App\Http\Controllers\User\PageController::class, 'DeleteSocial'])->name('page.SocialDelete');
 
+Route::post('myILNK/ButtonCreate', [App\Http\Controllers\User\PageController::class, 'createButton'])->name('page.ButtonCreate');
+Route::post('myILNK/ButtonDelete', [App\Http\Controllers\User\PageController::class, 'DeleteButton'])->name('page.ButtonDelete');
+
 
 });
 

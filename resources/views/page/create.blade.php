@@ -319,21 +319,24 @@ input[type="radio"]{
 					
                                 <div class="col-12 mb-3">
                                     <h5 class="text-center mb-2">@lang('page.ButtonsMenu')</h5>
-                                    <table class="table table-bordered">
+                                    <table class="table table-bordered" id="customTable">
                                         <thead>
                                           <tr>
-                                            <th scope="col">#</th>
                                             <th scope="col">@lang('concept.title')</th>
                                             <th scope="col">@lang('concept.link')</th>
+                                            <th scope="col">-</th>
                                           </tr>
                                         </thead>
                                         <tbody class="text-center">
-                                          <tr>
-                                            <td>1</td>
-                                            <td>زورونا</td>
-                                            <td>https://ILNK.at/</td>
-                                          </tr>
-                                        
+                                            @foreach($customButtons as $btn)
+                                            <tr id="c-{{$btn->id}}">
+                                              <td>{{$btn->title}}</td>
+                                              <td>{{$btn->url}}</td>
+                                              <td> <button type="button" onclick="DeleteC({{$btn->id}})" class="btn btn-danger text-white"><i class="fa fa-times"></i> </button></td>
+
+                                            </tr>
+                                          @endforeach
+
                                         </tbody>
                                       </table>
                 
@@ -366,7 +369,7 @@ input[type="radio"]{
 
                     <div class="modal-body">
 
-                        <form onsubmit="return false;">
+                        <form id="CustomForm" onsubmit="Create('{{route('page.ButtonCreate')}}','CustomForm','createButton'); return false;">
                         <div class="form-row">
                                     <div class="w-100 mb-3">
                                         <label for="pTitle" class="w-100 mb-2"> @lang('concept.title') </label>
@@ -378,12 +381,13 @@ input[type="radio"]{
                                         <input type="text" name="link" class="form-control" required>
                                     </div>
                         </div>
-                      </form>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('concept.cancel')</button>
                       <button type="submit" class="btn btn-primary">@lang('concept.send')</button>
                     </div>
+                  </form>
+
                   </div>
                 </div>
               </div>
@@ -420,7 +424,6 @@ input[type="radio"]{
                                             <option value="3"><i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn</option>
 
                                           </select>
-    
                                     </div>
                         </div>
                     </div>
@@ -509,6 +512,19 @@ sendData(route , form.serialize())
               // Add animation using animateCSS
               row.classList.add("animate__animated", "animate__fadeIn");
 
+            }else if(response.Ttype == 'custom'){
+              var table = document.getElementById("customTable");
+              var row = table.insertRow(-1);
+              var cell1 = row.insertCell(0);
+              var cell2 = row.insertCell(1);
+              var cell3 = row.insertCell(2);
+
+              cell1.innerHTML = response.title;
+              cell2.innerHTML = response.url;
+              cell3.innerHTML = '-';
+
+              row.classList.add("animate__animated", "animate__fadeIn");
+
             }
             console.log('Created Successfuly');
 
@@ -563,6 +579,40 @@ sendData(route , form.serialize())
         });
     }
 
+    
+    function DeleteC(id){
+        swal.fire({
+                title: '@lang("concept.sure")',
+                text: '@lang("concept.notRecoverAble")',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: '@lang("concept.cancel")',
+                confirmButtonText: '@lang("concept.yes")'
+            }).then((result) => {
+                if (result.value) {
+    sendData("{{route('page.ButtonDelete')}}","id="+id)
+    .then(function(response)
+    {
+      $.each(response.m,function(key,val) {
+        new toast({
+            icon: response.tp,
+            title: val
+            });
+        });
+    
+     if(response.tp == 'success')
+    {
+        animateCSS('#c-'+id, 'fadeOutUp').then((message) => {
+            $('#c-'+id).remove();
+            });
+        console.log('Removed Successfuly');
+    }
+    });
+            }
+        });
+    }
 
     // _______________
     $(document).ready(function () {
