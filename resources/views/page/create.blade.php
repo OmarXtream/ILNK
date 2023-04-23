@@ -4,6 +4,8 @@
 <link rel="stylesheet" href="{{ asset('assets/css/steps.css') }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/4.0.0-alpha.1/css/bootstrap-switch.min.css">
+
 
 <style>
     
@@ -75,6 +77,14 @@ input[type="radio"]{
 #option-1:checked:checked ~ .option-1 span,
 #option-2:checked:checked ~ .option-2 span{
   color: #fff;
+}
+
+.bootstrap-switch-primary{
+  background-color:#1D2646 !important;
+  border-color:#1D2646 !important;
+}
+.bootstrap-switch-handle-on{
+  color:white !important;
 }
 </style>
 @endsection
@@ -177,9 +187,8 @@ input[type="radio"]{
                             <h3 class="mt-4">@lang('page.menuAndappearance')</h3>
 							<div class="row justify-content-center align-items-center h-100">
 								<div class="col-md-8 bg-light rounded py-4 my-5">					
-							<div class="form-row">
-
-							<div class="row">
+							      <div class="form-row">
+							          <div div class="row">
                                 <div class="col-12 mb-3">
                                     <label for="des">@lang('page.des')</label>
                                     <textarea id="des" name="des"
@@ -190,14 +199,22 @@ input[type="radio"]{
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-								</div>
+								                      </div>
                                 <div class="col-12 mb-3">
                                     <label for="theme">@lang('page.theme')</label>
                                     <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                         <option value="1">@lang('page.defaultTheme')</option>
                                       </select>
                                       
-								</div>
+								                  </div>
+
+
+                                  <div class="col-12 mb-3 make-switch ">
+                                    <label for="statusbtn" class="mx-1">@lang('page.status')</label>
+                                    <input id="statusbtn" data-checkbox="VALUE1"type="checkbox" name="statusbtn" {{ (@$page->status == 1) ? "checked" : "" }} data-size="small">
+                                    <input type="hidden" id="status" name="status" {{ (@$page->status == 1) ? "checked" : "" }} data-size="small">
+
+								                  </div>
 
 
                                 <div class="col-12 mb-3">
@@ -486,7 +503,22 @@ input[type="radio"]{
 @section('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/4.0.0-alpha.1/js/bootstrap-switch.min.js"></script>
+
+
 <script>
+  $("[name='statusbtn']").bootstrapSwitch();
+
+$("[name='statusbtn']").on('switchChange.bootstrapSwitch', function (event, state) {
+ if (state) {
+  document.getElementById('status').value = 1;
+ } else {
+  document.getElementById('status').value = 0;
+ }
+   event.preventDefault();
+});
+
+
 
 function Create(route,formID,modelID){
     var form = $('#'+formID);
@@ -790,6 +822,9 @@ Dropzone.options.BGdropzone =
 
 
 </script>
+
+
+
 @endsection
 
 

@@ -44,15 +44,16 @@ class PageController extends Controller
 
     public function create(Request $request)
     {
+
         $this->validate($request, [
             'bgColor' => ['bail', 'string', 'max:255','nullable'],
             'des' => ['bail', 'string', 'max:255','nullable'],
             'menuType' => ['bail', 'integer','between:1,2'],
             'menuTitle' => ['bail', 'string', 'max:255','nullable'],
             'menuLink' => ['bail', 'url', 'max:255','nullable'],
+            'status' => ['bail', 'integer','between:0,1','nullable'],
 
         ]);
-
 
         $newPage = Page::updateOrCreate([
             'user_id'   => Auth::id(),
@@ -62,6 +63,8 @@ class PageController extends Controller
             'menuType' => $request->menuType,
             'menuTitle' => $request->menuTitle,
             'menuLink' => $request->menuLink,
+            'status' => $request->status,
+
         ]);
 
         alert()->success(__("concept.success"));

@@ -33,6 +33,7 @@ return [
     'CustomButtons' => 'Custom Buttons',
     'ButtonsMenu' => 'Buttons List',
     'customsLimit' => 'Only :limit buttons are allowed',
+    'status' => 'MY ILNK Status',
 
 
 
