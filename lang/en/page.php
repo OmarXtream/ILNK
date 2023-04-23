@@ -34,6 +34,8 @@ return [
     'ButtonsMenu' => 'Buttons List',
     'customsLimit' => 'Only :limit buttons are allowed',
     'status' => 'MY ILNK Status',
+    'share' => 'Share Your ILNK',
+    'share.barcode' => 'ILNK Barcode',
 
 
 

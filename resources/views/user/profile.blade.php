@@ -10,7 +10,7 @@
                         <h4 class="text-dark mb-4">@lang('concept.profile')</h4>
                             {{-- <td> <span class="badge badge-light">@lang('concept.membership')</span></td> --}}
                             <td> <span style="background-color:#1D2646 "
-                                    class="badge badge-warning text-white">@lang('concept.premium')</span></td>
+                                    class="badge badge-warning text-white">@lang('concept.subscribed')</span></td>
 
                         <form>
                             <div class="form-row justify-content-center align-items-end">
@@ -48,13 +48,15 @@
 
                 <div class="bg-light rounded py-4 px-2 my-5">
                     <div class="text-center">
-                        <img src="{{ asset('assets/imgs/study.png') }}" class="mb-4 img-fluid mx-auto" width="50%" alt="Welcome!">
+                        {!! DNS2D::getBarcodeSVG($link, 'QRCODE',10,10) !!}
+
+                        {{-- <img src="{{ asset('assets/imgs/study.png') }}" class="mb-4 img-fluid mx-auto" width="50%" alt="Welcome!"> --}}
                     </div>
 
-                    <h4 class="mb-4 text-center">@lang('concept.beta')</h4>
+                    {{-- <h4 class="mb-4 text-center">@lang('concept.beta')</h4> --}}
 
-                    <p class="mb-2 text-center">
-                        Soon
+                    <p class="my-4 text-center">
+                        @lang('page.share')
                     </p>
 
                 </div>
@@ -66,3 +68,4 @@
     </div>
 
 @endsection
+

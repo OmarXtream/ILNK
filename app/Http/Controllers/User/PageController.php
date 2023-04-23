@@ -304,5 +304,12 @@ class PageController extends Controller
     }
 
 
+    public function share()
+    {
+        $link = secure_url("/".auth()->user()->username);
+    
+        return view('page.share',compact('link'));
+    }
+
 
 }

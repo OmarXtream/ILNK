@@ -40,7 +40,7 @@ return [
     'profile' => 'Personal Account',
     'lang' => 'favorite language',
     'membership' => 'Free Account',
-    'premium' => 'Premium Account',
+    'subscribed' => 'Subscribed Account',
     'lastReport' => 'Last Report',
     'beta' => 'Beta version',
     'subscribe' => 'Subscribe',

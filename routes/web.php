@@ -52,6 +52,8 @@ Route::post('myILNK/SocialDelete', [App\Http\Controllers\User\PageController::cl
 Route::post('myILNK/ButtonCreate', [App\Http\Controllers\User\PageController::class, 'createButton'])->name('page.ButtonCreate');
 Route::post('myILNK/ButtonDelete', [App\Http\Controllers\User\PageController::class, 'DeleteButton'])->name('page.ButtonDelete');
 
+Route::get('myILNK/share', [App\Http\Controllers\User\PageController::class, 'share'])->name('page.share.barcode');
+
 
 });
 

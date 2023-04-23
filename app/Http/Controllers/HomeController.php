@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 class HomeController extends Controller
 {
     /**
@@ -30,7 +29,9 @@ class HomeController extends Controller
 
     public function profile()
     {
-        return view('user.profile');
+        $link = secure_url("/".auth()->user()->username);
+    
+        return view('user.profile',compact('link'));
     }
 
     

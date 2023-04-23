@@ -13,9 +13,13 @@
                   </li>
                   @can('HasPlan')
 
-                   <li class="nav-item mr-md-5">
+                   <li class="nav-item mr-md-3">
                       <a class="nav-link" href="{{route('page.index')}}">@lang('concept.myPage')</a>
                   </li> 
+
+                  <li class="nav-item mr-md-3">
+                    <a class="nav-link" target="_blank" href="{{route('page.share.barcode')}}">@lang('page.share.barcode')</a>
+                </li> 
 
                   @endcan
 

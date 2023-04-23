@@ -34,5 +34,7 @@ return [
     'ButtonsMenu' => 'قائمة الأزرار',
     'customsLimit' => 'الحد الاقصى هو :limit أزرار',
     'status' => 'وضع تشغيل الصفحة',
+    'share' => 'قم بمشاركة صفحتك',
+    'share.barcode' => 'باركود المشاركة',
 
 ];
