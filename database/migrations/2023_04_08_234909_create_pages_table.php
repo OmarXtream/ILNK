@@ -26,7 +26,7 @@ return new class extends Migration
 
             $table->foreignId('theme_id')->nullable()->nullOnDelete()->constrained();
 
-            $table->tinyInteger('status')->default(1)->comment(' 1=> On , 2 => Off');
+            $table->tinyInteger('status')->default(1)->comment(' 1=> On , 2 => Off')->nullable();
 
             $table->timestamps();
         });
