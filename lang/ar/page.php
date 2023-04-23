@@ -32,4 +32,6 @@ return [
 
     'CustomButtons' => 'أزرار إضافية',
     'ButtonsMenu' => 'قائمة الأزرار',
+    'customsLimit' => 'الحد الاقصى هو :limit أزرار',
+
 ];

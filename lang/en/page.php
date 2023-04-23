@@ -24,6 +24,7 @@ return [
     'menu.interactive' => 'Interactive',
     'addProduct' => 'Add Product',
     'productInfo' => 'Product Info',
+    'theme' => 'ILNK Theme',
     'defaultTheme' => 'Default Theme',
     'addButton' => 'Add Button',
     'socialMenu' => 'Social Media Buttons',
@@ -31,6 +32,8 @@ return [
 
     'CustomButtons' => 'Custom Buttons',
     'ButtonsMenu' => 'Buttons List',
+    'customsLimit' => 'Only :limit buttons are allowed',
+
 
 
 ];

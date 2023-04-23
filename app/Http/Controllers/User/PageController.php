@@ -18,6 +18,9 @@ use App\Models\customButton;
 use Auth;
 class PageController extends Controller
 {
+    # Limit Only 4 customButtons
+    public $CustomLimit = 4;
+
     public function __construct()
     {
         $this->middleware('subscribed');
@@ -252,6 +255,9 @@ class PageController extends Controller
             $page = Auth::user()->page;
         }
 
+        # Limit customButtons
+        if($page->customButtons()->count() < $this->CustomLimit){
+
         $button = $page->customButtons()->create([
             'title' => $request->pTitle,
             'url' => $request->link,
@@ -265,6 +271,13 @@ class PageController extends Controller
             'm' => ['success' => __('concept.success') ],
             
         ]);
+    }else{
+        
+        return response()->json([
+            'tp' => 'warning',
+            'message' => __('page.customsLimit',[ 'limit' => $this->CustomLimit ]),            
+        ]);
+    }
 
     }
 
