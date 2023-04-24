@@ -44,7 +44,6 @@ class PageController extends Controller
 
     public function create(Request $request)
     {
-
         $this->validate($request, [
             'bgColor' => ['bail', 'string', 'max:255','nullable'],
             'des' => ['bail', 'string', 'max:255','nullable'],

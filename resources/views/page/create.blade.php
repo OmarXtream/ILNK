@@ -217,6 +217,19 @@ input[type="radio"]{
 								                  </div>
 
 
+                                  <div class="col-12 mb-3">
+
+                                  <label for="menuTitle">@lang('page.menuTitle')</label>
+                                        <input type="text" id="menuTitle" name="menuTitle"
+                                            class="form-control @error('menuTitle') is-invalid @enderror"
+                                            value="{{ old('menuTitle') ? old('menuTitle') : @$page->menuTitle}}" placeholder="@lang('concept.title')">
+                                        @error('menuTitle')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
                                 <div class="col-12 mb-3">
                                     <label for="menuType">@lang('page.menuType') :</label>
                                     <div class="wrapper">
@@ -235,16 +248,6 @@ input[type="radio"]{
                                        </div>
 
                                        <div class="1 selectt mt-5" style="display: none;">
-                                        <label for="menuTitle">@lang('concept.title')</label>
-                                        <input type="text" id="menuTitle" name="menuTitle"
-                                            class="form-control @error('menuTitle') is-invalid @enderror"
-                                            value="{{ old('menuTitle') ? old('menuTitle') : @$page->menuTitle}}" placeholder="@lang('concept.title')">
-                                        @error('menuTitle')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-
 
                                         <label class="mt-2" for="menuLink">@lang('concept.link')</label>
                                         <input type="text" id="menuLink" name="menuLink"
