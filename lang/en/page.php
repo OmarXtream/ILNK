@@ -37,6 +37,7 @@ return [
     'share' => 'Share Your ILNK',
     'share.barcode' => 'ILNK Barcode',
     'menuTitle' => 'Menu Title',
+    'myMenu' => 'My Menu',
 
 
 

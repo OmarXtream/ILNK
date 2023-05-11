@@ -54,6 +54,9 @@ Route::post('myILNK/ButtonDelete', [App\Http\Controllers\User\PageController::cl
 
 Route::get('myILNK/share', [App\Http\Controllers\User\PageController::class, 'share'])->name('page.share.barcode');
 
+Route::post('myILNK/product/create', [App\Http\Controllers\User\MenuController::class, 'createProduct'])->name('page.product.create');
+Route::post('myILNK/product/delete', [App\Http\Controllers\User\MenuController::class, 'deleteProduct'])->name('page.product.delete');
+
 
 });
 

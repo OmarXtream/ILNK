@@ -14,6 +14,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Page;
 use App\Models\socialButton;
 use App\Models\customButton;
+use App\Models\menuProduct;
 
 use Auth;
 class PageController extends Controller
@@ -31,15 +32,17 @@ class PageController extends Controller
             $page = Auth::user()->page;
             $socialButtons = socialButton::where('page_id',$page->id)->get();
             $customButtons = customButton::where('page_id',$page->id)->get();
+            $menuProducts = menuProduct::where('page_id',$page->id)->get();
 
         }else{
             $page = null;
             $socialButtons = array(); // empty
             $customButtons = array(); // empty
+            $menuProducts = array(); // empty
 
         }
 
-        return view('page.create',compact('page','socialButtons','customButtons'));
+        return view('page.create',compact('page','socialButtons','customButtons','menuProducts'));
     }
 
     public function create(Request $request)

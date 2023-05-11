@@ -270,6 +270,39 @@ input[type="radio"]{
                                       
                                     </div>
 								</div>
+                <div class="col-12 mb-3">
+
+                  <h3 class="text-center mt-2 mb-3">@lang('page.myMenu')</h3>
+
+
+                  <table class="table table-bordered" id="menuTable">
+                    <thead>
+                      <tr class="text-center">
+                        <th scope="col">#</th>
+                        <th scope="col">@lang('concept.title')</th>
+                        <th scope="col">@lang('payment.cost')</th>
+                        <th scope="col">@lang('concept.img')</th>
+                        <th scope="col">-</th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-center">
+                      @foreach($menuProducts as $pr)
+                      <tr id="pr-{{$pr->id}}">
+                        <td>{{$pr->id}}</td>
+                        <td>{{$pr->title}}</td>
+                        <td>{{$pr->price}}</td>
+                        <td><img src="{{$pr->image()}}" alt="{{$pr->title}}" width="60px" height="60px"></td>
+                        <td> <button type="button" onclick="DeleteProduct({{$pr->id}})" class="btn btn-danger text-white"><i class="fa fa-times"></i> </button></td>
+
+                      </tr>
+                      @endforeach
+
+                    </tbody>
+                  </table>
+
+
+                </div>
+
 							</div>
 						</div>
 					</div>
@@ -469,7 +502,8 @@ input[type="radio"]{
 
                     <div class="modal-body">
 
-                        <form onsubmit="return false;">
+                        <form name="productForm">
+                          @csrf
                         <div class="form-row">
                                     <h3 class="mb-3"> @lang('page.productInfo') </h3>
                                     <div class="w-100 mb-3">
@@ -490,12 +524,12 @@ input[type="radio"]{
  
                                
                         </div>
-                      </form>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('concept.cancel')</button>
                       <button type="submit" class="btn btn-primary">@lang('concept.send')</button>
                     </div>
+                  </form>
                   </div>
                 </div>
               </div>
@@ -510,6 +544,45 @@ input[type="radio"]{
 
 
 <script>
+
+$("form[name='productForm']").on("submit", function(ev) {
+  ev.preventDefault(); // Prevent browser default submit.
+
+  var formData = new FormData(this);
+    
+  $.ajax({
+    url: "{{route('page.product.create')}}",
+    type: "POST",
+    data: formData,
+    success: function(response) 
+            {
+              $('#createProduct').modal('hide');
+              $("form[name='productForm']")[0].reset();
+
+                $.each(response.m,function(key,val) {
+                    swal.fire({
+                    title: val,
+                    icon: response.tp,
+                    showConfirmButton: false,
+                });
+            });
+
+        },
+    error: function(response)
+            {      
+            new toast({
+            icon: 'error',
+            title: response.message
+            });
+
+            },
+    cache: false,
+    contentType: false,
+    processData: false
+  });
+    
+});
+
   $("[name='statusbtn']").bootstrapSwitch();
 
 $("[name='statusbtn']").on('switchChange.bootstrapSwitch', function (event, state) {
@@ -641,6 +714,41 @@ sendData(route , form.serialize())
     {
         animateCSS('#c-'+id, 'fadeOutUp').then((message) => {
             $('#c-'+id).remove();
+            });
+        console.log('Removed Successfuly');
+    }
+    });
+            }
+        });
+    }
+
+
+    function DeleteProduct(id){
+        swal.fire({
+                title: '@lang("concept.sure")',
+                text: '@lang("concept.notRecoverAble")',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: '@lang("concept.cancel")',
+                confirmButtonText: '@lang("concept.yes")'
+            }).then((result) => {
+                if (result.value) {
+    sendData("{{route('page.product.delete')}}","id="+id)
+    .then(function(response)
+    {
+      $.each(response.m,function(key,val) {
+        new toast({
+            icon: response.tp,
+            title: val
+            });
+        });
+    
+     if(response.tp == 'success')
+    {
+        animateCSS('#pr-'+id, 'fadeOutUp').then((message) => {
+            $('#pr-'+id).remove();
             });
         console.log('Removed Successfuly');
     }
