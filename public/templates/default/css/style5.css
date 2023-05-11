@@ -4,7 +4,10 @@ html {
   font-family: "Work Sans", sans-serif;
   font-weight: 500;
   text-align: center;
+  background-color: #1e1e1e;
+  color: #fff;
 }
+
 body {
   margin: 0;
   padding: 0;
@@ -13,26 +16,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url(Doubs.png);
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 main {
-  background-color: rgb(255, 255, 255);
+  background-color: #252526;
   padding: 3rem;
   border-radius: 8px;
-  box-shadow: 10px 10px rgb(118, 172, 241);
+  box-shadow: 10px 10px #373737;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: all .5s ease;
-}
-
-main:hover {
-  transform: translate(10px, 10px);
-  box-shadow: 0px 0px rgb(118, 172, 241);
 }
 
 main div {
@@ -42,7 +36,6 @@ main div {
 
 main .profile img {
   width: 40%;
-  border-radius: 50%;
   box-shadow: 10px 6px rgba(97, 126, 240, 0.671);
   transition: all .5s ease;
 }
@@ -63,20 +56,20 @@ a {
 }
 
 a div {
-  background-color: rgb(183, 124, 238);
+  background-color: #6b6b6b;
   padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 10px 10px rgb(255, 187, 109);
+  border-radius: 20px; /* Updated to make buttons rounded */
+  box-shadow: 10px 10px #484848;
   text-align: center;
 }
 
 a div:hover {
-  background-color: rgb(255, 187, 109);
-  box-shadow: 10px 10px rgb(183, 124, 238);
+  background-color: #484848;
+  box-shadow: 10px 10px #6b6b6b;
 }
 
 a div:hover p {
-  color: black;
+  color: #fff;
 }
 
 a div img {
@@ -85,7 +78,7 @@ a div img {
 
 a div p {
   display: inline;
-  color: white;
+  color: #fff;
   text-align: center;
   position: relative;
   top: -0.5rem;
@@ -93,18 +86,13 @@ a div p {
 
 a div:active {
   transform: translate(10px, 10px);
-  box-shadow: 0px 0px rgb(183, 124, 238);
+  box-shadow: 0px 0px #6b6b6b;
 }
 
 @media (max-width: 900px) {
   main {
     width: 80%;
     padding: 1.5rem;
-    box-shadow: none;
-  }
-
-  main:hover {
-    transform: none;
     box-shadow: none;
   }
 

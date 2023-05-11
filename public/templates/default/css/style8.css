@@ -1,0 +1,197 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap");
+
+:root {
+  --primary-color-one: #f2a4bb;
+  --primary-color-two: #6c5b7b;
+  --secondary-color-one: #6b6b6b;
+  --secondary-color-two: #484848;
+  --gray-color: #f7f7f7;
+  --dark-gray-color: #252526;
+  --shadow-color: #373737;
+  --font-color: #000;
+  --dark-font-color: #fff;
+}
+
+html {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 500;
+  text-align: center;
+  background: var(--primary-gradient);
+  color: var(--font-color);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  background-color: var(--gray-color);
+  padding: 3rem;
+  border-radius: 8px;
+  box-shadow: 10px 10px var(--shadow-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+main div {
+  margin-bottom: 2rem;
+  width: 30vw;
+}
+
+main .profile img {
+  width: 40%;
+  box-shadow: 10px 6px rgba(97, 126, 240, 0.671);
+  transition: all 0.5s ease;
+}
+
+main .profile img:hover {
+  cursor: pointer;
+  transform: translate(10px, 10px);
+  box-shadow: 0px 0px rgba(97, 126, 240, 0.671);
+}
+
+main .profile h1 {
+  font-size: 2rem;
+  font-weight: bolder;
+}
+
+a {
+  text-decoration: none;
+}
+
+a div {
+  background-color: var(--secondary-color-one);
+  padding: 1rem;
+  border-radius: 20px;
+  box-shadow: 10px 10px var(--secondary-color-two);
+  text-align: center;
+}
+
+a div:hover {
+  background-color: var(--secondary-color-two);
+  box-shadow: 10px 10px var(--secondary-color-one);
+}
+
+a div:hover p {
+  color: var(--dark-font-color);
+}
+
+a div img {
+  width: 2rem;
+}
+
+a div p {
+  display: inline;
+  color: var(--dark-font-color);
+  text-align: center;
+  position: relative;
+  top: -0.5rem;
+}
+
+a div:active {
+  transform: translate(10px, 10px);
+  box-shadow: 0px 0px var(--secondary-color-one);
+}
+
+/* Light mode styles */
+html[data-theme="light"] {
+  --primary-gradient: linear-gradient(45deg, var(--primary-color-one), var(--primary-color-two));
+  --shadow-color: var(--shadow-color);
+  --font-color: var(--font-color);
+  --secondary-color-one: #6b6b6b;
+  --secondary-color-two: #484848;
+  --gray-color: #f7f7f7;
+}
+
+main[data-theme="light"] {
+  background-color: var(--gray-color);
+  box-shadow: 10px 10px var(--shadow-color);
+}
+
+a div[data-theme="light"] {
+  background-color: var(--secondary-color-one);
+  box-shadow: 10px 10px var(--secondary-color-two);
+}
+
+/* Dark mode styles */
+html[data-theme="dark"] {
+  --primary-gradient: linear-gradient(45deg, var(--dark-gray-color), #1e1e1e);
+  --shadow-color: var(--dark-gray-color);
+  --font-color: var(--dark-font-color);
+  --secondary-color-one: var(--dark-gray-color);
+  --secondary-color-two: var(--shadow-color);
+  --gray-color: #252526;
+}
+
+main[data-theme="dark"] {
+  background-color: var(--gray-color);
+  box-shadow: 10px 10px var(--shadow-color);
+}
+
+a div[data-theme="dark"] {
+  background-color: var(--secondary-color-one);
+  box-shadow: 10px 10px var(--secondary-color-one);
+}
+
+@media (max-width: 900px) {
+  main {
+    width: 80%;
+    padding: 1.5rem;
+    box-shadow: none;
+  }
+
+  main .profile h1 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  main .profile img {
+    width: 60%;
+  }
+
+  main .profile img:hover {
+    transform: none;
+    box-shadow: 10px 6px rgba(97, 126, 240, 0.671);
+  }
+
+  main div {
+    width: 70vw;
+  }
+}
+
+@media (max-width: 400px) {
+  main a div p span {
+    display: none;
+  }
+}
+
+/* Toggle button styles */
+#toggle-theme-btn {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: none;
+  background-color: var(--secondary-color-one);
+  color: var(--dark-font-color);
+  cursor: pointer;
+  box-shadow: 10px 10px var(--secondary-color-two);
+}
+
+#toggle-theme-btn:hover {
+  background-color: var(--secondary-color-two);
+  box-shadow: 10px 10px var(--secondary-color-one);
+}
+
+#toggle-theme-btn:focus {
+  outline: none;
+}

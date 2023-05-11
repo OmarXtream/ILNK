@@ -20,7 +20,7 @@ class GuestController extends Controller
                 $themePath = $user->page->theme->path;
             return view('page.guest',compact('themePath','user'));
             }else{
-                $themePath = "templates/default/index";
+                $themePath = "style6.css";
                 return view('page.guest',compact('themePath','user'));
 
             }
