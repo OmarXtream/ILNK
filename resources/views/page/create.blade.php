@@ -341,7 +341,7 @@ input[type="radio"]{
                                         <tbody class="text-center">
                                           @foreach($socialButtons as $btn)
                                           <tr id="s-{{$btn->id}}">
-                                            <td><i class="{{$btn->Icon()}}" aria-hidden="true"></i></td>
+                                            <td>{!! $btn->Icon() !!}</td>
                                             <td>{{$btn->title}}</td>
                                             <td>{{$btn->url}}</td>
                                             <td> <button type="button" onclick="DeleteS({{$btn->id}})" class="btn btn-danger text-white"><i class="fa fa-times"></i> </button></td>
