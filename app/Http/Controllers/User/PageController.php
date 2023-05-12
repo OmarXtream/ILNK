@@ -15,6 +15,7 @@ use App\Models\Page;
 use App\Models\socialButton;
 use App\Models\customButton;
 use App\Models\menuProduct;
+use App\Models\theme;
 
 use Auth;
 class PageController extends Controller
@@ -42,7 +43,9 @@ class PageController extends Controller
 
         }
 
-        return view('page.create',compact('page','socialButtons','customButtons','menuProducts'));
+        $themes = theme::get();
+
+        return view('page.create',compact('page','themes','socialButtons','customButtons','menuProducts'));
     }
 
     public function create(Request $request)
@@ -54,6 +57,7 @@ class PageController extends Controller
             'menuTitle' => ['bail', 'string', 'max:255','nullable'],
             'menuLink' => ['bail', 'url', 'max:255','nullable'],
             'status' => ['bail', 'integer','between:0,1','nullable'],
+            'theme' => ['bail', 'integer','exists:themes,id','nullable'],
 
         ]);
 
@@ -66,7 +70,7 @@ class PageController extends Controller
             'menuTitle' => $request->menuTitle,
             'menuLink' => $request->menuLink,
             'status' => $request->status,
-
+            'theme_id' => $request->theme,
         ]);
 
         alert()->success(__("concept.success"));
@@ -189,7 +193,7 @@ class PageController extends Controller
         $this->validate($request, [
             'pTitle' => ['bail', 'string', 'max:255','required'],
             'link' => ['bail', 'string', 'max:255','url','required'],
-            'platform' => ['bail', 'integer','between:1,11','required'],
+            'platform' => ['bail', 'integer','between:1,13','required'],
 
         ]);
 

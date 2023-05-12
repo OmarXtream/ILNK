@@ -202,8 +202,12 @@ input[type="radio"]{
 								                      </div>
                                 <div class="col-12 mb-3">
                                     <label for="theme">@lang('page.theme')</label>
-                                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                        <option value="1">@lang('page.defaultTheme')</option>
+                                    <select name="theme" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                      @forelse($themes as $theme)
+                                      <option value="{{$theme->id}}">{{$theme->name}}</option>
+                                      @empty
+                                      <option value="" disabled>@lang('page.defaultTheme')</option>
+                                      @endforelse
                                       </select>
                                       
 								                  </div>
@@ -234,9 +238,9 @@ input[type="radio"]{
                                     <label for="menuType">@lang('page.menuType') :</label>
                                     <div class="wrapper">
                                         <input type="radio" name="menuType" 
-                                        value="1" id="option-1">
+                                        value="1" id="option-1" {{ @$page->menuType == 1 ? 'checked' : ''}}>
                                         <input type="radio" name="menuType" 
-                                        value="2" id="option-2">
+                                        value="2" id="option-2" {{ @$page->menuType == 2 ? 'checked' : '' }}>
                                           <label for="option-1" class="option option-1">
                                             <div class="dot"></div>
                                              <span>@lang('page.menu.directLink')</span>
@@ -472,9 +476,19 @@ input[type="radio"]{
                                     <div class="w-100 mb-3">
                                         <label for="platform">@lang('page.platform')</label>
                                         <select name="platform" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                            <option value="1"><i class="fab fa-twitter" aria-hidden="true"></i> Twitter</option>
-                                            <option value="2"><i class="fab fa-facebook" aria-hidden="true"></i> FaceBook</option>
-                                            <option value="3"><i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn</option>
+                                            <option value="1">Twitter</option>
+                                            <option value="2">FaceBook</option>
+                                            <option value="3">LinkedIn</option>
+                                            <option value="4">Instagram</option>
+                                            <option value="5">SnapChat</option>
+                                            <option value="6">Tiktok</option>
+                                            <option value="7">Pinterest</option>
+                                            <option value="8">Discord</option>
+                                            <option value="9">Github</option>
+                                            <option value="10">Youtube</option>
+                                            <option value="11">Twitch</option>
+                                            <option value="12">Map</option>
+                                            <option value="13">Website</option>
 
                                           </select>
                                     </div>

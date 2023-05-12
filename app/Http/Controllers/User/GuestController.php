@@ -12,18 +12,11 @@ class GuestController extends Controller
 {
     public function showPage(User $user){
 
-        if($user->page){
+        if($user->page && $user->page->status == 1){
         
         $user->load('page');
-
-            if($user->page->theme){
-                $themePath = $user->page->theme->path;
-            return view('page.guest',compact('themePath','user'));
-            }else{
-                $themePath = "style6.css";
-                return view('page.guest',compact('themePath','user'));
-
-            }
+        
+        return view('page.guest',compact('user'));
 
         }
             abort(404);

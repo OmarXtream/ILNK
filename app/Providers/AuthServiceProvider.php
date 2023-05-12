@@ -24,7 +24,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         Gate::define('HasPlan', fn ($user) =>  $user->subscription);
 
-        Gate::define('HasPremium', fn ($user) =>  $user->subscription && $user->subscription->plan != "Free");
+        Gate::define('HasPremium', fn ($user) =>  $user->subscription && $user->subscription->plan->name != "Free");
 
     }
 }
