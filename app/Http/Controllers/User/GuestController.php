@@ -20,8 +20,18 @@ class GuestController extends Controller
 
         }
             abort(404);
-        
-
     }
+
+    public function showMenu(User $user){
+        if($user->page && $user->page->status == 1 && $user->page->menuType == 2){
+        
+        $user->load('page');
+        
+        return view('page.menu',compact('user'));
+
+        }
+            abort(404);
+    }
+
 
 }

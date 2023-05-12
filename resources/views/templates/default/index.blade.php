@@ -73,7 +73,7 @@
 
         
         @if($user->page->menuType == 2)
-        <a href="#" target="blank">
+        <a href="{{$user->url()}}/menu" target="blank">
             <div class="text-center">
                 <p>{{@$user->page->menuTitle}} <i class="fa fa-bars"></i></p>
             </div>

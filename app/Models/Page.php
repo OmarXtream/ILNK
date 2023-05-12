@@ -67,4 +67,10 @@ class Page extends Model
         return $this->hasMany(customButton::class);
     }
 
+    public function menuProducts(): HasMany
+    {
+        return $this->hasMany(menuProduct::class);
+    }
+
+
 }

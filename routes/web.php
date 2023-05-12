@@ -64,3 +64,4 @@ Route::post('myILNK/product/delete', [App\Http\Controllers\User\MenuController::
 
 
 Route::get('/{user:username}', [App\Http\Controllers\User\GuestController::class, 'showPage'])->name('page.guest');
+Route::get('/{user:username}/menu', [App\Http\Controllers\User\GuestController::class, 'showMenu'])->name('page.guest.menu');
